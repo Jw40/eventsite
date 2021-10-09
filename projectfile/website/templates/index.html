@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+
+          <!--Jumbotron-->
+          <div class=".p-sm-5 mb-4 bg-light rounded-3 card2">
+            <div class="jumbotronback container-fluid py-5">
+                <h1 class="display-5 fw-bold text-white customOutline">Upcoming Music Event:</h1>
+                <h4 class="display-5 fw-bold text-warning changeFont customOutline">Red Hot Chilli Peppers</h4>
+                    <p id = JumboPara class="col-md-8 fw-bold text-white fs-4 bg-dark rounded-3">One of the most popular rock groups in the world is coming to Australia. 
+                        This famous rock band will be playing in all major Australian cities. This will be that last chance you have to see this amazing band. In This tour they
+                         will be performing their iconic album Stadium Arcadium released in 2006. Book tickets now to secure a seat for this amazing event.</p>
+                    <a href="Event Details.html" class="btn btn-primary margin3">Find Tickets</a>
+            </div>
+        </div>
+
+{% endblock %}
+   
+{% block content %} 
+        
+        <!--Welcome Message-->
+        <h1 class = "text-center">Welcome to the MusicEvents Website! </h1>
+        <!--Seach All Music text-->
+        <h6 class = "text-center">Search All Music </h6>
+
+
+        <div class="container-fluid">
+
+            <!--Search Bar-->
+            <form id = searchbar action="#" autocomplete="off" class="form-horizontal" method="post" accept-charset="utf-8">
+                <div class="a input-group margin3">
+                    <input name="searchtext" value="" class="form-control" type="text" id = innerSearchBar>
+                    <span class="input-group-btn ">
+                        <button class="btn btn-default" type="submit" id="addressSearch"><span class="icon-search"></span>&#128269</button>
+                    </span>
+                   
+                </div>
+            </form>
+            <!--Search by Catergoy text-->
+            <h6 class = "text-center">Search Music by Category </h6>
+
+             <!--Catergory Nav Bar-->
+             <ul class="margin nav justify-content-center">
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                  <a class="nav-link active" href="#rock" id = 'CatBar'>Rock</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                  <a class="nav-link" href="#pop" id = 'CatBar'>Pop</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                  <a class="nav-link" href="#jazz" id = 'CatBar'>Jazz</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                    <a class="nav-link" href="#Country" id = 'CatBar'>Country</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                    <a class="nav-link" href="#Electronic" id = 'CatBar'>Electronic</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                    <a class="nav-link" href="#" id = 'CatBar'>Funk</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                    <a class="nav-link" href="#" id = 'CatBar'>Reggae</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                    <a class="nav-link" href="#" id = 'CatBar'>Heavy Metal</a>
+                </li>
+                <li class="nav-item bg-dark rounded-3 nav2li">
+                    <a class="nav-link" href="#" id = 'CatBar'>Rhythm and Blues</a>
+                </li>
+            </ul>
+           
+
+            <!--Row 1 ROCK category-->
+            <h3 class = "text-left" id="rock">Rock Music Events:</h3>
+            <div class="row">
+                <div class="col-4 col-lg-4 col-md-4 col-sm-4 card  center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='rock1.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Pavement</h4>
+                        <h6 class="card-title text-danger">Status: Booked</h6>
+                        <p class="card-text">Ut dignissim dolor at elit varius, et convallis turpis tristique. Phasellus et sem tellus. Sed quis blandit massa. Ut tempor tincidunt odio sit amet imperdiet. Nam tincidunt ligula tellus, molestie iaculis arcu varius sit amet. Aliquam non consectetur quam. Praesent commodo quam imperdiet ultricies bibendum.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-4 col-sm-4 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='rock2.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeah Yeah Yeah's</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Lacus mi, posuere et convallis a, scelerisque nec augue. Mauris malesuada lobortis dignissim. Maecenas porta tincidunt odio, nec dignissim nisl luctus a. Nam neque magna, facilisis id arcu quis, condimentum aliquet tortor. Vestibulum auctor blandit orci, sit amet lobortis nisi. Maecenas eu sodales nisi. Cras vitae dui maximus ligula iaculis tincidunt.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-4 col-sm-4 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='rock3.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Nirvana</h4>
+                        <h6 class="card-title text-danger">Status: Cancelled</h6>
+                        <p class="card-text">Pellentesque aliquet ante ut magna commodo porta. Fusce ut facilisis felis, non aliquam sem. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum. Unfortunately Kurt Cobain passed away. </p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class = "row">
+                <div class="col text-center">
+                    <a href="#" class="btn btn-secondary">View More</a>
+                </div>
+
+            </div>
+
+            <!--Row 2 Pop catergory -->
+            <h3 class = "text-left" id="pop">Pop Music Events:</h3>
+            <div class="row">
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='pop1.jfif')}}" class="card-img-top" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Olivia Rodrigo</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Tiam sit amet consectetur quam. Nunc consectetur eros et turpis rutrum, eu placerat nisi laoreet. Cras vel elit a est elementum accumsan a a erat. Aenean cursus mattis sapien, a vestibulum ante venenatis a. Pellentesque varius erat at velit dictum, non aliquet magna iaculis.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='pop2.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">BTS</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Duis sollicitudin non turpis at dapibus. Pellentesque aliquet ante ut magna commodo porta. Fusce ut facilisis felis, non aliquam sem. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='pop3.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Lorde</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Pellentesque aliquet ante ut magna commodo porta. Fusce ut facilisis felis, non aliquam sem. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum. Mauris gravida efficitur placerat. Nulla finibus accumsan mauris ac suscipit. Suspendisse varius tincidunt quam.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class = "row">
+                <div class="col text-center">
+                    <a href="#" class="btn btn-secondary">View More</a>
+                </div>
+
+            </div>
+
+            <!--Row 3 Jazz category-->
+            <h3 class = "text-left" id="jazz">Jazz Music Events:</h3>
+            <div class="row">
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='jazz1.jfif')}}" class="card-img-top" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Miles Davis</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Tiam sit amet consectetur quam. Nunc consectetur eros et turpis rutrum, eu placerat nisi laoreet. Cras vel elit a est elementum accumsan a a erat. Aenean cursus mattis sapien, a vestibulum ante venenatis a. Pellentesque varius erat at velit dictum, non aliquet magna iaculis.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='jazz2.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Charles Mingus</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Duis sollicitudin non turpis at dapibus. Pellentesque aliquet ante ut magna commodo porta. Fusce ut facilisis felis, non aliquam sem. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='jazz3.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Chet Baker</h4>
+                        <h6 class="card-title text-danger">Status: Booked</h6>
+                        <p class="card-text">Pellentesque aliquet ante ut magna commodo porta. Fusce ut facilisis felis, non aliquam sem. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum. Mauris gravida efficitur placerat. Nulla finibus accumsan mauris ac suscipit. Suspendisse varius tincidunt quam.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class="col text-center">
+                        <a href="#" class="btn btn-secondary">View More</a>
+                    </div>
+    
+                </div>
+            </div>
+
+            <!--Row 4 Country music category-->
+            <h3 class = "text-left" id="Country">Country Music Events:</h3>
+            <div class="row">
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='country1.jfif')}}" class="card-img-top" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Johnny Cash</h4>
+                        <h6 class="card-title text-danger">Status: Cancelled</h6>
+                        <p class="card-text">Aenean sodales urna eu accumsan mattis. Pellentesque a congue quam. Maecenas tempus lectus efficitur maximus sodales. Duis ut metus in elit commodo ullamcorper. Duis volutpat placerat lacus, quis vestibulum diam tempor in. In et cursus orci, ac placerat sem.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='country2.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Willie Nelson</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Nulla eu nunc quis erat finibus pellentesque. Cras quis posuere ipsum. Cras condimentum elementum mi, in venenatis ex ornare ut. Praesent maximus aliquet rhoncus. Phasellus fermentum mi sit amet tellus vehicula, at volutpat mi laoreet.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='country3.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Dolly Parton</h4>
+                        <h6 class="card-title text-danger">Status: Booked</h6>
+                        <p class="card-text">Sed quis blandit massa. Ut tempor tincidunt odio sit amet imperdiet. Nam tincidunt ligula tellus, molestie iaculis arcu varius sit amet. Aliquam non consectetur quam. Praesent commodo quam imperdiet ultricies bibendum.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class = "row">
+                    <div class="col text-center">
+                        <a href="#" class="btn btn-secondary">View More</a>
+                    </div>
+    
+                </div>
+
+                <!--Row 5 Electronic Music catergory -->
+            <h3 class = "text-left" id="Electronic">Electronic Music Events:</h3>
+            <div class="row">
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='elec1.jfif')}}" class="card-img-top" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Deadmau5</h4>
+                        <h6 class="card-title text-secondary">Status: Inactive</h6>
+                        <p class="card-text">Consectetur quam. Nunc consectetur eros et turpis rutrum, eu placerat nisi laoreet. Cras vel elit a est elementum accumsan a a erat. Aenean cursus mattis sapien, a vestibulum ante venenatis a. Pellentesque varius erat at velit dictum, non aliquet magna iaculis.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='elec2.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Lorn</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Sollicitudin non turpis at dapibus. Pellentesque aliquet ante ut magna commodo porta. Fusce ut facilisis felis, non aliquam sem. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                <div class="col-4 col-lg-4 col-md-3 col-sm2 card center" style="width: 30rem;">
+                    <img src="{{url_for('static', filename='elec3.jfif')}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h4 class="card-title">Polygon</h4>
+                        <h6 class="card-title text-info">Status: Upcoming</h6>
+                        <p class="card-text">Fusce ut facilisis felis. Aliquam sit amet neque molestie, dictum tellus nec, malesuada quam. Maecenas in quam malesuada, mattis nunc vel, dignissim ipsum. Mauris gravida efficitur placerat. Nulla finibus accumsan mauris ac suscipit. Suspendisse varius tincidunt quam.</p>
+                        <a href="Event Details.html" class="btn btn-primary">Find Tickets</a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class = "row">
+                <div class="col text-center">
+                    <a href="#" class="btn btn-secondary">View More</a>
+                </div>
+
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="col text-center align-center">
+                    <a href="#" class="btn buttonCustom" id = lastButton>More Categories</a>
+                </div>
+            </div>
+        </div>
+{% endblock %}

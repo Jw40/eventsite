@@ -1,0 +1,232 @@
+@media only screen and (max-width: 600px) {
+
+    .event-description{
+        overflow:hidden;
+        max-height: 300px;
+        -webkit-box-orient: vertical;
+        display: block;
+        display: -webkit-box;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 4;
+        margin-bottom: 2rem;
+    }
+
+}
+
+
+/*Jumbotron Image and placement*/
+.jumbotronback {
+    background-image: url('jumboimage.jfif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+/*padding jumbotron paragraph text*/
+p#JumboPara {
+    padding: 20px;
+}
+
+legend {
+    width: 100px;
+    padding: 10px 20px;
+}
+
+/*Padding the search bar form*/
+form#searchbar {
+    padding: 20px;
+}
+
+legend {
+    width: 200px;
+    padding: 10px 20px;
+}
+
+/*align text in search bar*/
+input#innerSearchBar {
+    text-align: center;
+}
+
+/*Card*/
+.card {
+    margin: 0 auto;
+    float: none;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px 20px;
+}
+
+/*Card*/
+.card2 {
+    margin: auto;
+    float: none;
+    margin-bottom: 10px;
+
+
+    margin-top: 50px;
+}
+
+
+.container-fluid-nav div {
+    display: flex;
+    justify-content: space-around;
+}
+
+/*Category nav bar padding*/
+.justify-content-center {
+    padding: 20px 20px;
+}
+
+/*List Margin*/
+li {
+    margin-right: 20px;
+}
+
+/*Category List Margin*/
+.nav2li {
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+/*Category button colour custom*/
+a#CatBar {
+    color: white !important;
+}
+
+/*NavBar custom dimensions*/
+.custom {
+    width: 78px !important;
+    height: 78px !important;
+}
+
+/*h1 custom padding*/
+h1 {
+    padding: 40px;
+}
+
+/*h2 custom padding*/
+h2#commentTitle {
+    padding: 40px;
+}
+
+button {
+    margin: 10px;
+}
+
+/*first button custom margin*/
+a#topButton {
+    margin: 10px;
+}
+
+/*last button custom margin*/
+a#lastButton {
+    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-right: 22px;
+}
+
+/*centering*/
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+/*custom contrainer width and margin*/
+.detailsContainer {
+    width: 1600px;
+    margin-top: 25px;
+}
+
+/*custom margin*/
+div#Comments {
+    margin: 0 auto;
+    /* Added */
+    float: none;
+    /* Added */
+    margin-bottom: 10px;
+}
+
+/*custom margin and padding on comment text*/
+input#commentText {
+    border: 1px solid rgba(16, 46, 46, 1);
+    float: left;
+    border-radius: 5px;
+    padding-left: 40px;
+    padding-right: 30px;
+    padding-top: 10px;
+    margin-bottom: 160px;
+}
+
+/*custom colors*/
+.navbar-custom {
+    background-color: #4682b4;
+}
+
+.marginBarCustom {
+    background-color: #E6E6FA;
+}
+
+.backgroundCustom {
+    background-color: #778899;
+}
+
+.buttonCustom {
+    background-color: #f4a460;
+}
+
+.buttonCustom2 {
+    background-color: #008080;
+}
+
+/*generic custom pad*/
+.pad {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*generic custom margin*/
+.margin {
+    padding-bottom: 25px;
+}
+
+.margin2 {
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.margin3 {
+    margin-left: 25px;
+}
+
+.marginComment {
+    max-width: 1000px;
+}
+
+/*custom font*/
+.changeFont {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*custom font*/
+.changeFont2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+/*custom outline*/
+.customOutline {
+    color: white;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.margintop{
+    margin-top: 20px;
+}

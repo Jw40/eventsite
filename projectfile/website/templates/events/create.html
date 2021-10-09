@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<style>
+  .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        padding: 80px;
+}
+form {
+
+ padding: 50px;
+ position: relative;
+}
+
+</style>
+  <div class="container">
+    <div class="row mt-5">
+      <div class="card col-md-12">
+
+        <h1 class = "text-center">Add Travel Destination</h1>
+        <p class = "text-center">Enter a country that you will help clients travel to.</p>
+
+
+        <div class="row ">
+          <div class="card col-12 col-lg-10 col-md-8 col-sm-12">
+              {{ wtf.quick_form(form, button_map={'submit':'success'}) }}
+          </div>
+      </div>
+        
+
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
