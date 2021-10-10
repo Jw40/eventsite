@@ -32,7 +32,7 @@ class RegisterForm(FlaskForm):
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new destination
-class DestinationForm(FlaskForm):
+class EventForm(FlaskForm):
   name = StringField(u'Country', validators=[InputRequired()])
   description = TextAreaField('Description', 
             validators=[InputRequired()])
