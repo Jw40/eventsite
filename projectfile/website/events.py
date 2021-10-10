@@ -5,37 +5,37 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for
 from .models import Event, Comment
-from .forms import DestinationForm, CommentForm
+from .forms import EventForm, CommentForm
 from . import db
 import os
 from werkzeug.utils import secure_filename
 
-bp = Blueprint('event', __name__, url_prefix='/events')
+bp = Blueprint('events', __name__, url_prefix='/events')
 
 @bp.route('/<id>')
 def show(id):
-    destination = Event.query.filter_by(id=id).first()
+    event = Event.query.filter_by(id=id).first()
     # create the comment form
     cform = CommentForm()    
-    return render_template('destinations/show.html', destination=destination, form=cform)
+    return render_template('templates/events/show.html', destination=event, form=cform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 def create():
   print('Method type: ', request.method)
-  form = DestinationForm()
+  form = EventForm()
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
-    destination=Event(name=form.name.data,description=form.description.data, 
-    image=db_file_path,currency=form.currency.data)
+    event=Event(id=form.id.data, name=form.name.data, description=form.description.data, 
+    image=db_file_path,price=form.price.data)
     # add the object to the db session
-    db.session.add(destination)
+    db.session.add(event)
     # commit to the database
     db.session.commit()
-    print('Successfully created new travel destination', 'success')
+    print('Successfully created new event')
     #Always end with redirect when form is valid
-    return redirect(url_for('destination.create'))
-  return render_template('events/create.html', form=form)
+    return redirect(url_for('event.create'))
+  return render_template('templates/events/create.html', form=form)
 
 def check_upload_file(form):
   #get file data from form  
@@ -51,22 +51,22 @@ def check_upload_file(form):
   fp.save(upload_path)
   return db_upload_path
 
-@bp.route('/<destination>/comment', methods = ['GET', 'POST'])  
-def comment(destination):  
+@bp.route('/<event>/comment', methods = ['GET', 'POST'])  
+def comment(event):  
     form = CommentForm()  
-    #get the destination object associated to the page and the comment
-    destination_obj = Event.query.filter_by(id=destination).first()  
+    #get the event object associated to the page and the comment
+    event_obj = Event.query.filter_by(id=event).first()  
     if form.validate_on_submit():  
       #read the comment from the form
       comment = Comment(text=form.text.data,  
-                        destination=destination_obj) 
-      #here the back-referencing works - comment.destination is set
+                        event=event_obj) 
+      #here the back-referencing works - comment.event is set
       # and the link is created
       db.session.add(comment) 
       db.session.commit() 
 
       #flashing a message which needs to be handled by the html
       #flash('Your comment has been added', 'success')  
-      print('Your comment has been added', 'success') 
-    # using redirect sends a GET request to destination.show
-    return redirect(url_for('destination.show', id=destination))
+      print('Your comment has been added') 
+    # using redirect sends a GET request to event.show
+    return redirect(url_for('event.show', id=event))
