@@ -40,11 +40,26 @@ def authenticate(): #view function
 #temp from week 9 research
 @bp.route('/register', methods=['GET','POST'])
 def register():
-    form = RegisterForm()
-    if form.validate_on_submit():
-        print('Successfully registered')
-        return redirect(url_for('auth.login'))
-    return render_template('user.html', form=form, heading='Register')
+    register = RegisterForm()
+    if register.validate_on_submit():
+        uname = register.user_name.data
+        pwd = register.password.data
+        email = register.email_id.data
+        
+        # Check if the user name already exists
+        u1 = User.query.filter_by(name=uname).first()
+        if u1:
+            flash('User name already exists, please login')
+            return redirect(url_for('auth.login'))
+        
+        # Generate a password hash to store and commit the new user to the database
+        pwd_hash = generate_password_hash(pwd)
+        new_user = User(name=uname, password_hash=pwd_hash, emailid=email)
+        db.session.add(new_user)
+        db.session.commit()
+    
+    else:    
+        return render_template('user.html', form=register, heading='Register')
 
 
 @bp.route("/logout", methods=["GET"])
