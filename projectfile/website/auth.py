@@ -57,7 +57,8 @@ def register():
         new_user = User(name=uname, password_hash=pwd_hash, emailid=email)
         db.session.add(new_user)
         db.session.commit()
-    
+        return redirect(url_for('main.index'))
+
     else:    
         return render_template('user.html', form=register, heading='Register')
 
