@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(255), nullable=False)
 
     # relation to call user.comments and comment.created_by
-    comments = db.relationship('comments', backref='user')
+    comments = db.relationship('Comment', backref='user')
     booking = db.relationship('Booking', backref='user')
 
 #events class
@@ -30,10 +30,10 @@ class Event(db.Model):
     category = db.Column(db.String(20))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
-    comments = db.relationship('Comment', backref='user')
+    comments = db.relationship('Comment', backref='events')
     booking = db.relationship('Booking', backref='events')
     # one to one relationship with event status
-    event_status = db.relationship('Event_Status', back_populates="events", uselist = False)
+    event_status = db.relationship('Event_Status', backref="events")
     #event_status = db.relationship('Event_Status', backref="events")
 
     def __repr__(self): #string print method
@@ -42,7 +42,7 @@ class Event(db.Model):
 #event_status class
 class Event_Status(db.Model):
     __tablename__ = 'event_status'
-    event_id = db.Column(db.Integer, db.ForeignKey('event.id'),primary_key=True)
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'),primary_key=True)
     status = db.Column(db.String(10))
 
     def __repr__(self):
