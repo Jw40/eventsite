@@ -1,10 +1,10 @@
 #db has not been created yet, this is where we store data in the db
-
+from flask_login import UserMixin
 from . import db
 from datetime import datetime
 
 #users class
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__='users' # good practice to specify table name
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True)
@@ -15,7 +15,7 @@ class User(db.Model):
     password_hash = db.Column(db.String(255), nullable=False)
 
     # relation to call user.comments and comment.created_by
-    comments = db.relationship('Comment', backref='user')
+    comments = db.relationship('comments', backref='user')
     booking = db.relationship('Booking', backref='user')
 
 #events class
@@ -69,7 +69,7 @@ class Booking(db.Model):
     booking_Id = db.Column(db.Integer, primary_key=True)
     booking_date = db.Column(db.Date, default=datetime.now())
     price = db.Column(db.Integer)
-    quantity = db.Column(db.Int, default = 1)
+    quantity = db.Column(db.Integer, default = 1)
     
     #foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
