@@ -3,7 +3,7 @@
 #from the week 9 tutorial CHANGE code to events related stuff to create event with a image, route to event/comment
 
 
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for,flash
 from .models import Event, Comment
 from .forms import EventForm, CommentForm
 from . import db
@@ -14,10 +14,10 @@ bp = Blueprint('events', __name__, url_prefix='/events')
 
 @bp.route('/<id>')
 def show(id):
-    event = Event.query.filter_by(id=id).first()
-    # create the comment form
-    cform = CommentForm()    
-    return render_template('templates/events/show.html', destination=event, form=cform)
+  event = Event.query.filter_by(id=id).first()
+  # create the comment form
+  cform = CommentForm()    
+  return render_template('events/show.html', event=event, form=cform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 def create():
@@ -33,9 +33,10 @@ def create():
     # commit to the database
     db.session.commit()
     print('Successfully created new event')
+    flash('Sucessfully Created New Event.')
     #Always end with redirect when form is valid
     return redirect(url_for('event.create'))
-  return render_template('templates/events/create.html', form=form)
+  return render_template('events/create.html', form=form)
 
 def check_upload_file(form):
   #get file data from form  
@@ -70,3 +71,4 @@ def comment(event):
       print('Your comment has been added') 
     # using redirect sends a GET request to event.show
     return redirect(url_for('event.show', id=event))
+
