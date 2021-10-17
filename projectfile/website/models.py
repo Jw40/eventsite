@@ -25,6 +25,8 @@ class Event(db.Model):
     name = db.Column(db.String(80))
     description = db.Column(db.String(200))
     image = db.Column(db.String(400))
+    date = db.Column(db.String(20))
+    venue = db.Column(db.String(80))
     price = db.Column(db.Numeric(8))
     quota = db.Column(db.Integer, default = 1)
     category = db.Column(db.String(20))
