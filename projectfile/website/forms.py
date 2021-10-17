@@ -1,7 +1,7 @@
 #differnt type of forms using Wtfforms, login, register, eventform, comment form
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField
+from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -28,10 +28,9 @@ class RegisterForm(FlaskForm):
     submit = SubmitField("Register")
 
 #create EventForm
-#change 'DestinationForm' to 'EventForm'
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
-#Create new destination
+#Create new event
 class EventForm(FlaskForm):
   name = StringField(u'Event Name', validators=[InputRequired()])
   description = TextAreaField('Description', 
@@ -39,7 +38,9 @@ class EventForm(FlaskForm):
   image = FileField('Event Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  currency = StringField('Venue', validators=[InputRequired()])
+  venue = StringField('Venue', validators=[InputRequired()])
+  price = IntegerField('Ticket Price', validators=[InputRequired()])
+  ticket_num = IntegerField('Ticket Quantity', validators=[InputRequired()])
   submit = SubmitField("Create")
 
 
