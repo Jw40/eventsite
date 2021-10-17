@@ -54,6 +54,10 @@ def register():
         if u1:
             flash('User name already exists, please login')
             return redirect(url_for('auth.login'))
+        email1 = User.query.filter_by(emailid = email).first()
+        if email1:
+            flash('This email address has been registered, please use another one')
+            return redirect(url_for('auth.login'))
         
         # Generate a password hash to store and commit the new user to the database
         pwd_hash = generate_password_hash(pwd)
