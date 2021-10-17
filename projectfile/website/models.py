@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     # relation to call user.comments and comment.created_by
     comments = db.relationship('Comment', backref='user')
     booking = db.relationship('Booking', backref='user')
+    event = db.relationship('Event', backref='user')
 
 #events class
 class Event(db.Model):
@@ -28,6 +29,7 @@ class Event(db.Model):
     price = db.Column(db.Numeric(8))
     quota = db.Column(db.Integer, default = 1)
     category = db.Column(db.String(20))
+    owner = db.Column(db.Integer, db.ForeignKey('users.id'))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='events')
@@ -35,7 +37,6 @@ class Event(db.Model):
     # one to one relationship with event status
     event_status = db.relationship('Event_Status', backref="events")
     #event_status = db.relationship('Event_Status', backref="events")
-
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
 
