@@ -9,6 +9,8 @@ from .forms import EventForm, CommentForm
 from . import db
 import os
 from werkzeug.utils import secure_filename
+#additional import:
+from flask_login import login_required, current_user
 
 bp = Blueprint('events', __name__, url_prefix='/events')
 
@@ -20,14 +22,15 @@ def show(id):
   return render_template('events/show.html', event=event, form=cform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
+@login_required
 def create():
   print('Method type: ', request.method)
   form = EventForm()
   if form.validate_on_submit():
     #call the function that checks and returns image
     db_file_path=check_upload_file(form)
-    event=Event(id=form.id.data, name=form.name.data, description=form.description.data, 
-    image=db_file_path,price=form.price.data)
+    event=Event(name=form.name.data, description=form.description.data, 
+    image=db_file_path, price=form.price.data, quota=form.ticket_num.data)
     # add the object to the db session
     db.session.add(event)
     # commit to the database
@@ -35,7 +38,7 @@ def create():
     print('Successfully created new event')
     flash('Sucessfully Created New Event.')
     #Always end with redirect when form is valid
-    return redirect(url_for('event.create'))
+    return redirect(url_for('events.create'))
   return render_template('events/create.html', form=form)
 
 def check_upload_file(form):
@@ -52,7 +55,8 @@ def check_upload_file(form):
   fp.save(upload_path)
   return db_upload_path
 
-@bp.route('/<event>/comment', methods = ['GET', 'POST'])  
+@bp.route('/<event>/comment', methods = ['GET', 'POST'])
+@login_required  
 def comment(event):  
     form = CommentForm()  
     #get the event object associated to the page and the comment
@@ -60,7 +64,8 @@ def comment(event):
     if form.validate_on_submit():  
       #read the comment from the form
       comment = Comment(text=form.text.data,  
-                        event=event_obj) 
+                        events=event_obj, 
+                        user = current_user) 
       #here the back-referencing works - comment.event is set
       # and the link is created
       db.session.add(comment) 
@@ -70,5 +75,5 @@ def comment(event):
       #flash('Your comment has been added', 'success')  
       print('Your comment has been added') 
     # using redirect sends a GET request to event.show
-    return redirect(url_for('event.show', id=event))
+    return redirect(url_for('events.show', id=event))
 
