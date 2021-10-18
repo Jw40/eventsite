@@ -44,6 +44,14 @@ class EventForm(FlaskForm):
   ticket_num = IntegerField('Ticket Quantity', validators=[InputRequired()])
   submit = SubmitField("Create")
 
+<<<<<<< HEAD
+=======
+#create BookingForm
+class BookingForm(FlaskForm):
+    quantity = IntegerField('Quantity', validators=[InputRequired()])
+    submit = SubmitField('Book tickets')
+
+>>>>>>> a8cd02245f8d598d028ad4607b8da508704222fe
 #create CommentForm
 #User comment
 class CommentForm(FlaskForm):
