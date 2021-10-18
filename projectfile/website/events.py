@@ -5,7 +5,7 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
 from .models import Event, Comment
-from .forms import EventForm, CommentForm
+from .forms import EventForm, CommentForm, BookingHistoryForm
 from . import db
 import os
 from werkzeug.utils import secure_filename
@@ -76,4 +76,38 @@ def comment(event):
       print('Your comment has been added') 
     # using redirect sends a GET request to event.show
     return redirect(url_for('events.show', id=event))
+
+@bp.route('/booking', methods = ['GET', 'POST'])
+@login_required
+def booking():
+  print('Method type: ', request.method)
+  form = EventForm()
+  if form.validate_on_submit():
+    #call the function that checks and returns image
+    db_file_path=check_upload_file(form)
+    event=Event(name=form.name.data, description=form.description.data, 
+    image=db_file_path, date=form.date.data, venue=form.venue.data, price=form.price.data, quota=form.ticket_num.data)
+    # add the object to the db session
+    db.session.add(event)
+    # commit to the database
+    db.session.commit()
+    print('Successfully created new event')
+    flash('Sucessfully Created New Event.')
+    #Always end with redirect when form is valid
+    return redirect(url_for('events.create'))
+  return render_template('events/create.html', form=form)
+
+@bp.route('/booking_history', methods = ['GET', 'POST'])
+@login_required
+def booking_history():
+  print('Method type: ', request.method)
+  form = BookingHistoryForm()
+  if form.validate_on_submit():
+    #call the function that checks and returns image
+    db_file_path=check_upload_file(form)
+    event=Event(name=form.name.data, description=form.description.data, 
+    image=db_file_path, date=form.date.data, venue=form.venue.data, price=form.price.data, quota=form.ticket_num.data)
+    #Always end with redirect when form is valid
+    return redirect(url_for('events.booking_history'))
+  return render_template('events/booking_history.html', form=form)
 

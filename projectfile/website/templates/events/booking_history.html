@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<div class="container-fluid backgroundCustom margin card2">
+    <h2 class = "text-center pad changeFont"><strong>Booking History</strong></h2>
+
+   
+    
+    <div class = "row pad">
+      <div class="col-12 card center pad" style="width: 62rem;">
+        <div class="container">
+          <div class="row bg-faded">
+              <div class="col-md-12">
+                  <div class="card card-body h-100 justify-content-center">
+                    <img src="{{ image}}" class="center" alt="Responsive image">
+                      <!-- order id should be chaged-->
+                      <h6 class ="text-center pad"><b>Order ID: </br></b></h6>
+                      <h6 class="card-title text-info text-center">Status: Upcoming</h6>
+                      <p class ="text-center">Music Event: </br>{{name}}</p>
+                      <p class ="text-center">Ticket Qty: </br>{{ticket_num}}</p>
+                      <p class ="text-center">Total Price (AUD): </br>${{price}}(GST Inc.)</p> 
+                      <p class ="text-center">Booking Date: </br>{{bookingdate}}</p>
+                      <p class ="text-center">Event Date: </br>{{date}}</p>
+                      <a href="#" class="btn btn-primary">View Event Details</a> 
+                  </div>
+              </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

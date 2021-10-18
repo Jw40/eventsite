@@ -1,8 +1,7 @@
 #differnt type of forms using Wtfforms, login, register, eventform, comment form
 
 from flask_wtf import FlaskForm
-from wtforms.fields import TextAreaField,SubmitField, StringField, PasswordField, IntegerField
-from wtforms.fields.core import DateField
+from wtforms.fields import DateField, TextAreaField,SubmitField, StringField, PasswordField, IntegerField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
@@ -40,19 +39,29 @@ class EventForm(FlaskForm):
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
   venue = StringField('Venue', validators=[InputRequired()])
-  date = StringField('Date', validators=[InputRequired()])
+  date = DateField('Date', validators=[InputRequired()])
   price = IntegerField('Ticket Price', validators=[InputRequired()])
   ticket_num = IntegerField('Ticket Quantity', validators=[InputRequired()])
   submit = SubmitField("Create")
-
-
-#create BookingForm
-
-
-
 
 #create CommentForm
 #User comment
 class CommentForm(FlaskForm):
   text = TextAreaField('Comment', [InputRequired()])
   submit = SubmitField('Create')
+
+#create BookingForm
+
+#create BookingHistoryForm
+class BookingHistoryForm(FlaskForm):
+  id = IntegerField('Ticket Price', validators=[InputRequired()])
+  name = StringField(u'Event Name', validators=[InputRequired()])
+  image = FileField('Event Image', validators=[
+    FileRequired(message='Image cannot be empty'),
+    FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
+  venue = StringField('Venue', validators=[InputRequired()])
+  bookingdate = DateField('Booking Date', validators=[InputRequired()])
+  date = DateField('Date', validators=[InputRequired()])
+  ticket_num = IntegerField('Ticket Quantity', validators=[InputRequired()])
+  price = IntegerField('Ticket Price', validators=[InputRequired()])
+  submit = SubmitField("View Event Details")
