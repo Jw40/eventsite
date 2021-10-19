@@ -4,7 +4,7 @@
 
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
-from .models import Event, Comment
+from .models import Event, Comment, Event_Status
 from .forms import EventForm, CommentForm, BookingHistoryForm
 from . import db
 import os
@@ -32,15 +32,18 @@ def create():
     event=Event(name=form.name.data, description=form.description.data, artist=form.artist.data,
     image=db_file_path, date=form.date.data, venue=form.venue.data, venue_address=form.venue_address.data, 
     city=form.city.data, state=form.state.data, zipcode=form.zipcode.data, price=form.price.data, 
-    quota=form.ticket_num.data)
+    quota=form.ticket_num.data, owner = current_user)
+    #event_status =Event_Status(status = form.status.data)
     # add the object to the db session
     db.session.add(event)
+    #db.session.add(event_status)
     # commit to the database
     db.session.commit()
     print('Successfully created new event')
     flash('Sucessfully Created New Event.')
     #Always end with redirect when form is valid
-    return redirect(url_for('events.create'))
+    return redirect(url_for('main.index'))
+  print('not validate')
   return render_template('events/create.html', form=form)
 
 def check_upload_file(form):
