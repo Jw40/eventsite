@@ -35,10 +35,15 @@ class EventForm(FlaskForm):
   name = StringField(u'Event Name', validators=[InputRequired()])
   description = TextAreaField('Description', 
             validators=[InputRequired()])
+  artist = StringField('Artist(s)', validators=[InputRequired()])
   image = FileField('Event Image', validators=[
     FileRequired(message='Image cannot be empty'),
     FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
   venue = StringField('Venue', validators=[InputRequired()])
+  venue_address = StringField('Venue Address', validators=[InputRequired()])
+  city = StringField('City', validators=[InputRequired()])
+  state = StringField('State', validators=[InputRequired()])
+  zipcode = IntegerField('Zip Code', validators=[InputRequired()])
   date = DateField('Date', validators=[InputRequired()])
   price = IntegerField('Ticket Price', validators=[InputRequired()])
   ticket_num = IntegerField('Ticket Quantity', validators=[InputRequired()])
