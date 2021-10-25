@@ -4,7 +4,7 @@
 
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
-from .models import Event, Comment, Event_Status
+from .models import Booking, Event, Comment, Event_Status
 from .forms import EventForm, CommentForm, BookingHistoryForm, Status_List
 from . import db
 import os
@@ -112,15 +112,9 @@ def booking():
 @bp.route('/booking_history', methods = ['GET', 'POST'])
 @login_required
 def booking_history():
-  print('Method type: ', request.method)
-  form = BookingHistoryForm()
-  if form.validate_on_submit():
-    #call the function that checks and returns image
-    db_file_path=check_upload_file(form)
-    event=Event(name=form.name.data, description=form.description.data, 
-    image=db_file_path, date=form.date.data, venue=form.venue.data, price=form.price.data, quota=form.ticket_num.data)
-    #Always end with redirect when form is valid
-    return redirect(url_for('events.booking_history'))
-  return render_template('events/booking_history.html', form=form)
+  records = Booking.query.filter_by(user_id=current_user.id )
+  return render_template('events/booking_history.html', records = records)
+
+
 
 #place categroy find in when viewing place if 

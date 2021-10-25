@@ -12,18 +12,19 @@
         <div class="container">
           <div class="row bg-faded">
               <div class="col-md-12">
+                {% for record in records %} 
                   <div class="card card-body h-100 justify-content-center">
                     <img src="{{ image}}" class="center" alt="Responsive image">
                       <!-- order id should be chaged-->
-                      <h6 class ="text-center pad"><b>Order ID: </br></b></h6>
+                      <h6 class ="text-center pad"><b>Order ID: </br>{{record.booking_Id}}</b></h6>
                       <h6 class="card-title text-info text-center">Status: Upcoming</h6>
-                      <p class ="text-center">Music Event: </br>{{name}}</p>
-                      <p class ="text-center">Ticket Qty: </br>{{ticket_num}}</p>
-                      <p class ="text-center">Total Price (AUD): </br>${{price}}(GST Inc.)</p> 
-                      <p class ="text-center">Booking Date: </br>{{bookingdate}}</p>
-                      <p class ="text-center">Event Date: </br>{{date}}</p>
-                      <a href="#" class="btn btn-primary">View Event Details</a> 
+                      <p class ="text-center">Music Event: </br>{{record.name}}</p>
+                      <p class ="text-center">Ticket Qty: </br>{{record.quantity}}</p>
+                      <p class ="text-center">Total Price (AUD): </br>${{record.price}}(GST Inc.)</p> 
+                      <p class ="text-center">Booking Date: </br>{{record.booking_date}}</p>
+                      <a href="{{url_for('events.show', id=record.events_id)}}" class="btn btn-primary">View Event Details</a> 
                   </div>
+                {% endfor %}
               </div>   
           </div>
         </div>
