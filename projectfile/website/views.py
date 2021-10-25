@@ -5,8 +5,9 @@ mainbp = Blueprint('main', __name__)
 
 @mainbp.route('/')
 def index():
-    events = Event.query.all()
-    return render_template('index.html', events = events)
+    event = Event.query.all()
+    category = Event.query.filter(Event.category).all()
+    return render_template('index.html', event = event, category = category)
 
 @mainbp.route('/search')
 def search():

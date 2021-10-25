@@ -5,7 +5,7 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
 from .models import Event, Comment, Event_Status
-from .forms import EventForm, CommentForm, BookingHistoryForm
+from .forms import EventForm, CommentForm, BookingHistoryForm, Status_List
 from . import db
 import os
 from werkzeug.utils import secure_filename
@@ -25,6 +25,7 @@ def show(id):
 @login_required
 def create():
   print('Method type: ', request.method)
+  message = 'Sucessfully Created New Event.'
   form = EventForm()
   if form.validate_on_submit():
     #call the function that checks and returns image
@@ -32,15 +33,21 @@ def create():
     event=Event(name=form.name.data, description=form.description.data, artist=form.artist.data,
     image=db_file_path, date=form.date.data, venue=form.venue.data, venue_address=form.venue_address.data, 
     city=form.city.data, state=form.state.data, zipcode=form.zipcode.data, price=form.price.data, 
-    quota=form.ticket_num.data, category = form.category.data) #removed owner = current_user to make this work (currently no assoication to user who created event)
-    event_status =Event_Status(status = form.event_status.data)
+    quota=form.ticket_num.data, category = form.category.data, owner = current_user.id) #this now works changed .id
+    
+    #event_obj = Event.query.filter_by(id=event).first()  
+    
     # add the object to the db session
     db.session.add(event)
-    #db.session.add(event_status)
+    db.session.commit()
+
+    event_id = Event.query.filter_by(id=event.id).first().id  
+    event_status =Event_Status(status = form.event_status.data, events_id =event_id)
+    db.session.add(event_status)
     # commit to the database
     db.session.commit()
     print('Successfully created new event')
-    flash('Sucessfully Created New Event.')
+    flash(message)
     #Always end with redirect when form is valid
     return redirect(url_for('main.index'))
   print('not validate')
@@ -116,3 +123,4 @@ def booking_history():
     return redirect(url_for('events.booking_history'))
   return render_template('events/booking_history.html', form=form)
 
+#place categroy find in when viewing place if 

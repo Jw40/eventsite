@@ -32,7 +32,7 @@ class Event(db.Model):
     state = db.Column(db.String(10))
     zipcode = db.Column(db.Integer)
     category = db.Column(db.String(20))
-    event_status = db.relationship('Event_Status', backref="events")
+    
     description = db.Column(db.String(200))
     
     price = db.Column(db.Numeric(8))
@@ -45,6 +45,7 @@ class Event(db.Model):
     comments = db.relationship('Comment', backref='events')
     booking = db.relationship('Booking', backref='events')
     # one to one relationship with event status
+    status = db.relationship('Event_Status', backref='events')
     
     #event_status = db.relationship('Event_Status', backref="events")
     def __repr__(self): #string print method
@@ -54,11 +55,13 @@ class Event(db.Model):
 #event_status class
 class Event_Status(db.Model):
     __tablename__ = 'event_status'
-    event_id = db.Column(db.Integer, db.ForeignKey('events.id'),primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
+    events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     status = db.Column(db.String(10))
+    
 
     def __repr__(self):
-        return "<Status: {}".format(self.status)
+        return " {} ".format(self.status)
 
 #comments class
 class Comment(db.Model):
