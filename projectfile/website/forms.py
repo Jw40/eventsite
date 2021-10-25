@@ -2,8 +2,12 @@
 
 from flask_wtf import FlaskForm
 from wtforms.fields import DateField, TextAreaField,SubmitField, StringField, PasswordField, IntegerField
+from wtforms.fields.core import SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
+
+Categories_List = ('Rock', 'Pop', 'Jazz')
+Status_List = ('Upcoming,', 'Booked', 'Canceled', 'Inactive')
 
 #creates the login information
 class LoginForm(FlaskForm):
@@ -31,22 +35,28 @@ class RegisterForm(FlaskForm):
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new event
+#Create new event
 class EventForm(FlaskForm):
   name = StringField(u'Event Name', validators=[InputRequired()])
-  description = TextAreaField('Description', 
-            validators=[InputRequired()])
   artist = StringField('Artist(s)', validators=[InputRequired()])
-  image = FileField('Event Image', validators=[
-    FileRequired(message='Image cannot be empty'),
-    FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
-  venue = StringField('Venue', validators=[InputRequired()])
+  date = DateField('Event Date', validators=[InputRequired()])
+  venue = StringField('Venue Name', validators=[InputRequired()])
   venue_address = StringField('Venue Address', validators=[InputRequired()])
   city = StringField('City', validators=[InputRequired()])
   state = StringField('State', validators=[InputRequired()])
   zipcode = IntegerField('Zip Code', validators=[InputRequired()])
-  date = DateField('Date', validators=[InputRequired()])
+  
+  category = SelectField('Category', choices=[(category, category) for category in Categories_List], validators=[InputRequired()])
+  #category = StringField('Category', validators=[InputRequired()])
+  event_status = SelectField('Status', choices=[(status, status) for status in Status_List], validators=[InputRequired()])\
+  #event_status = StringField('Status', validators=[InputRequired()])
+  description = TextAreaField('Description', 
+            validators=[InputRequired()])
   price = IntegerField('Ticket Price', validators=[InputRequired()])
   ticket_num = IntegerField('Ticket Quantity', validators=[InputRequired()])
+  image = FileField('Event Image', validators=[
+    FileRequired(message='Image cannot be empty'),
+    FileAllowed(ALLOWED_FILE, message='Only supports png,jpg,JPG,PNG')])
   submit = SubmitField('Create')
 
 #create BookingForm

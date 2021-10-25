@@ -25,27 +25,31 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     artist = db.Column(db.String(80))
-    description = db.Column(db.String(200))
-    image = db.Column(db.String(400))
     date = db.Column(db.DateTime(20))
     venue = db.Column(db.String(80))
     venue_address = db.Column(db.String(255))
     city = db.Column(db.String(60))
     state = db.Column(db.String(10))
     zipcode = db.Column(db.Integer)
+    category = db.Column(db.String(20))
+    event_status = db.relationship('Event_Status', backref="events")
+    description = db.Column(db.String(200))
+    
     price = db.Column(db.Numeric(8))
     quota = db.Column(db.Integer, default = 1)
-    category = db.Column(db.String(20))
+    
+    image = db.Column(db.String(400))
     owner = db.Column(db.Integer, db.ForeignKey('users.id'))
     # ... Create the Comments db.relationship
 	# relation to call destination.comments and comment.destination
     comments = db.relationship('Comment', backref='events')
     booking = db.relationship('Booking', backref='events')
     # one to one relationship with event status
-    event_status = db.relationship('Event_Status', backref="events")
+    
     #event_status = db.relationship('Event_Status', backref="events")
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
+
 
 #event_status class
 class Event_Status(db.Model):

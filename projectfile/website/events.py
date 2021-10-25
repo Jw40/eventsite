@@ -32,8 +32,8 @@ def create():
     event=Event(name=form.name.data, description=form.description.data, artist=form.artist.data,
     image=db_file_path, date=form.date.data, venue=form.venue.data, venue_address=form.venue_address.data, 
     city=form.city.data, state=form.state.data, zipcode=form.zipcode.data, price=form.price.data, 
-    quota=form.ticket_num.data, owner = current_user)
-    #event_status =Event_Status(status = form.status.data)
+    quota=form.ticket_num.data, category = form.category.data) #removed owner = current_user to make this work (currently no assoication to user who created event)
+    event_status =Event_Status(status = form.event_status.data)
     # add the object to the db session
     db.session.add(event)
     #db.session.add(event_status)
