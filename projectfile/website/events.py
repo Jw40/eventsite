@@ -112,7 +112,7 @@ def booking():
 @bp.route('/booking_history', methods = ['GET', 'POST'])
 @login_required
 def booking_history():
-  records = Booking.query.filter_by(user_id=current_user.id )
+  records = db.session.query(Booking, Event).filter(Booking.events_id == Event.id).filter_by(user_id=current_user.id)
   return render_template('events/booking_history.html', records = records)
 
 
