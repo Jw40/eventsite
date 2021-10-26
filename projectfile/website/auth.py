@@ -40,7 +40,7 @@ def login():
 
 
 
-#temp from week 9 research
+
 @bp.route('/register', methods=['GET','POST'])
 def register():
     register = RegisterForm()

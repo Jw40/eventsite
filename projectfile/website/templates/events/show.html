@@ -62,8 +62,50 @@
         </div>  
       </div>  
     </div> 
-    
-    
+
+        <!-- inner modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-5" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Booking Tickets: {{event.name}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="center">
+                  <p class="text-center">Amount of tickets:
+                  </p>
+                  <div class="">
+
+                    <p>
+                      </p><div class="input-group">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">-
+                                <span class="glyphicon glyphicon-minus"></span>
+                              </button>
+                          </span>
+                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-success " data-type="plus" data-field="quant[2]">+
+                                  <span class="glyphicon glyphicon-plus"></span>
+                              </button>
+                          </span>
+                      </div>
+                  <p></p>
+                </div>
+                  <p class="text-center card margintop">Ticket Price:<strong>{{event.price}}</strong></p>
+                  <p class="text-center card margintop">Total (AUD): <strong>need to figure out</strong></p>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{{url_for('events.show', id=event.id)}}" class="btn btn-success btn-md" id='topButton'><span
+                    class="glyphicon glyphicon-log-out"></span> Confirm</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  
  
    
  
@@ -72,7 +114,7 @@
     <div>
 
       <div class="navigation text-center center">
-        <p>Search Events</p>
+        <p>Search Events (this should be removed, it is redundant)</p>
         <a href="" class="nav_btn">1</a>
         <a href="" class="nav_btn">2</a>
         <a href="" class="nav_btn">3</a>
@@ -97,18 +139,16 @@
       </div>  
     </div>  
  
-    <div class="row border-bottom"> 
+    <div class="row border-bottom pad"> 
       {{wtf.quick_form(form,"/events/{0}/comment".format(event.id), button_map={'submit':'success'})}} 
       {% for comment in event.comments %}
-      <div class="card col-md-12" id="Comments">  
+      <div class="card col-md-12 pad" id="Comments">  
         <b>{{comment.user.name}} <span class="ml-2 text-muted">{{comment.created_at.strftime("%d %B, %Y")}}</span></b>&#128231
         <p>{{comment.text}}</p>  
       </div> 
       {% endfor %} 
       <br>
-      <div class="col text-center">
-        <button class="btn btn-secondary">View More</button>
-      </div>
+      
     </div>  
   </div> 
 

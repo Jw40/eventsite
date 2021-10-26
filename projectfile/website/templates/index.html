@@ -27,15 +27,9 @@
 
         <div class="container-fluid">
 
-            <!--Search Bar-->
-            <form id = searchbar action="#" autocomplete="off" class="form-horizontal" method="post" accept-charset="utf-8">
-                <div class="a input-group margin3">
-                    <input name="searchtext" value="" class="form-control" type="text" id = innerSearchBar>
-                    <span class="input-group-btn ">
-                        <button class="btn btn-default" type="submit" id="addressSearch"><span class="icon-search"></span>&#128269</button>
-                    </span>
-                   
-                </div>
+            <form class="form-inline d-flex flex-nowrap" id = searchbar action="{{url_for('main.search')}}" >
+                <input type="text" name="search" class="pad2 form-control flex-grow-1 my-1 mr-sm-2 a margin3" id="innerSearchBar">
+                <button type="submit" class="flex-shrink-1 btn btn-primary my-1">&#128269</button>
             </form>
             <!--Search by Catergoy text-->
             <h6 class = "text-center">Search Music by Category </h6>
@@ -70,76 +64,77 @@
                     <a class="nav-link" href="#" id = 'CatBar'>Rhythm and Blues</a>
                 </li>
             </ul>
-           
+            <table>
+                <tr style="border-bottom: 1px dotted silver;">
+                    <td style="width:1500px"></td>
+                    <td style="width:200px"></td>
+                </tr>
+            </table>
 
             <!--Row 1 ROCK category-->
-            <h3 class = "text-left" id="rock">Rock Music Events:</h3>
+            <h2 class = "text-center margin4" id="rock"><b><u>Rock Music Events</u></b></h2>
             <div class="row">
-                {% for event in event %}
-                <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center" style="width: 30rem;">
-                    {% if 'Rock' in event.category %}
-                    
-                    <img src="{{event.image}}" class="card-img-top" alt="...">
+                {% for rockEvent in rockEvent  %}
+                <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+                    <img src="{{rockEvent .image}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-title">{{event.name}}</h4>
-                        <h6 class="card-title text-info">Status: {{event.status}}</h6>
-                        <p class="card-text">{{event.description}}</p>
+                        <h4 class="card-title">{{rockEvent.name}}</h4>
+                        <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
+                        <p class="card-text">{{rockEvent.description}}</p>
                         <a href="{{url_for('events.show', id=event.id)}}" class="btn btn-primary">Find Tickets</a>
                     </div>
-                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
-             <h3 class = "text-left" id="pop">Pop Music Events:</h3>
+
+            <!--dividing line-->
+            <table>
+                <tr style="border-bottom: 1px dotted silver;">
+                    <td style="width:1500px"></td>
+                    <td style="width:200px"></td>
+                </tr>
+            </table>
+
+            
+            <!--Row 1 POP category-->
+            <h2 class = "text-center margin4 " id="pop"><b><u>Pop Music Events</u></b></h2>
             <div class="row">
-                {% for event in event %}
-                <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center" style="width: 30rem;">
-                    {% if 'Pop' in event.category %}
-                    
-                    <img src="{{event.image}}" class="card-img-top" alt="...">
+                {% for popEvent in popEvent  %}
+                <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+                    <img src="{{popEvent.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-title">{{event.name}}</h4>
-                        <h6 class="card-title text-info">Status: {{event.status}}</h6>
-                        <p class="card-text">{{event.description}}</p>
+                        <h4 class="card-title">{{popEvent.name}}</h4>
+                        <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
+                        <p class="card-text">{{popEvent.description}}</p>
                         <a href="{{url_for('events.show', id=event.id)}}" class="btn btn-primary">Find Tickets</a>
                     </div>
-                    {% endif %}
                 </div>
                 {% endfor %}
-                
             </div>
 
-            <h3 class = "text-left" id="jazz">Jazz Music Events:</h3>
+            <!--dividing line-->
+            <table>
+                <tr style="border-bottom: 1px dotted silver;">
+                    <td style="width:1500px"></td>
+                    <td style="width:200px"></td>
+                </tr>
+            </table>
+
+            
+            <!--Row 1 Jazz category-->
+            <h2 class = "text-center margin4 " id="jazz"><b><u>Jazz Music Events</u></b></h2>
             <div class="row">
-                {% for event in event %}
-                <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center" style="width: 30rem;">
-                    {% if 'Jazz' in event.category %}
-                    
-                    <img src="{{event.image}}" class="card-img-top" alt="...">
+                {% for jazzEvent in jazzEvent %}
+                <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+                    <img src="{{jazzEvent.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h4 class="card-title">{{event.name}}</h4>
-                        <h6 class="card-title text-info">Status: {{event.status}}</h6>
-                        <p class="card-text">{{event.description}}</p>
+                        <h4 class="card-title">{{jazzEvent.name}}</h4>
+                        <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
+                        <p class="card-text">{{jazzEvent.description}}</p>
                         <a href="{{url_for('events.show', id=event.id)}}" class="btn btn-primary">Find Tickets</a>
                     </div>
-                    {% endif %}
                 </div>
                 {% endfor %}
-                
             </div>
-
-            <div class = "row">
-                <div class="col text-center">
-                    <a href="#" class="btn btn-secondary">View More</a>
-                </div>
-
-            </div>
-            </div>
-
-            <div class="row">
-                <div class="col text-center align-center">
-                    <a href="#" class="btn buttonCustom" id = lastButton>More Categories</a>
-                </div>
-            </div>
-        </div>
+            
 {% endblock %}
