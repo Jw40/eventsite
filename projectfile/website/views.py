@@ -15,6 +15,21 @@ def index():
     jazzEvent = Event.query.filter(Event.category.like("Jazz")).all()
     return render_template('index.html', event = event, rockEvent = rockEvent, popEvent = popEvent, jazzEvent = jazzEvent) #rockCategory = rockCategory then call in html jinja2 template in for loop
 
+@mainbp.route('/category')
+def category():
+    event = Event.query.all()
+    rockEvent = Event.query.filter(Event.category.like("Rock")).all()
+    popEvent = Event.query.filter(Event.category.like("Pop")).all()
+    jazzEvent = Event.query.filter(Event.category.like("Jazz")).all()
+    countryEvent = Event.query.filter(Event.category.like("Country")).all()
+    electronicEvent = Event.query.filter(Event.category.like("Electronic")).all()
+    funkEvent = Event.query.filter(Event.category.like("Funk")).all()
+    reggaeEvent = Event.query.filter(Event.category.like("Reggae")).all()
+    heavyEvent = Event.query.filter(Event.category.like("Heavy Metal")).all()
+    rythemEvent = Event.query.filter(Event.category.like("Rhythm and Blues")).all()
+    return render_template('category.html', event = event, rockEvent = rockEvent, popEvent = popEvent, jazzEvent = jazzEvent, countryEvent = countryEvent, electronicEvent = electronicEvent,
+    funkEvent = funkEvent, reggaeEvent = reggaeEvent, heavyEvent = heavyEvent, rythemEvent = rythemEvent) 
+
 @mainbp.route('/search',  methods=['GET', 'POST'])
 def search():
     if request.args['search']:

@@ -2,18 +2,19 @@
 
 {% block header %}
 
-
+        {% for event in event %}
+            {% if 'Red Hot Chilli Peppers' in event.name %}
           <!--Jumbotron-->
           <div class=".p-sm-5 mb-4 bg-light rounded-3 card2">
             <div class="jumbotronback container-fluid py-5">
                 <h1 class="display-5 fw-bold text-white customOutline">Upcoming Music Event:</h1>
-                <h4 class="display-5 fw-bold text-warning changeFont customOutline">Red Hot Chilli Peppers</h4>
-                    <p id = JumboPara class="col-md-8 fw-bold text-white fs-4 bg-dark rounded-3">One of the most popular rock groups in the world is coming to Australia. 
-                        This famous rock band will be playing in all major Australian cities. This will be that last chance you have to see this amazing band. In This tour they
-                         will be performing their iconic album Stadium Arcadium released in 2006. Book tickets now to secure a seat for this amazing event.</p>
+                <h4 class="display-5 fw-bold text-warning changeFont customOutline">{{event.name}}</h4>
+                    <p id = JumboPara class="col-md-8 fw-bold text-white fs-4 bg-dark rounded-3">{{event.description}}</p>
                     <a href="{{url_for('events.show', id=event.id)}}" class="btn btn-primary margin3">Find Tickets</a>
             </div>
         </div>
+            {% endif %}
+        {% endfor %}
 
 {% endblock %}
    
@@ -32,36 +33,18 @@
                 <button type="submit" class="flex-shrink-1 btn btn-primary my-1">&#128269</button>
             </form>
             <!--Search by Catergoy text-->
-            <h6 class = "text-center">Search Music by Category </h6>
+            <h6 class = "text-center ">Search Popular Categories </h6>
 
              <!--Catergory Nav Bar-->
              <ul class="margin nav justify-content-center">
                 <li class="nav-item bg-dark rounded-3 nav2li">
-                  <a class="nav-link active" href="#rock" id = 'CatBar'>Rock</a>
+                  <a class="nav-link active btn-lg" href="#rock" id = 'CatBar'>Rock</a>
                 </li>
                 <li class="nav-item bg-dark rounded-3 nav2li">
-                  <a class="nav-link" href="#pop" id = 'CatBar'>Pop</a>
+                  <a class="nav-link btn-lg" href="#pop" id = 'CatBar'>Pop</a>
                 </li>
                 <li class="nav-item bg-dark rounded-3 nav2li">
-                  <a class="nav-link" href="#jazz" id = 'CatBar'>Jazz</a>
-                </li>
-                <li class="nav-item bg-dark rounded-3 nav2li">
-                    <a class="nav-link" href="#Country" id = 'CatBar'>Country</a>
-                </li>
-                <li class="nav-item bg-dark rounded-3 nav2li">
-                    <a class="nav-link" href="#Electronic" id = 'CatBar'>Electronic</a>
-                </li>
-                <li class="nav-item bg-dark rounded-3 nav2li">
-                    <a class="nav-link" href="#" id = 'CatBar'>Funk</a>
-                </li>
-                <li class="nav-item bg-dark rounded-3 nav2li">
-                    <a class="nav-link" href="#" id = 'CatBar'>Reggae</a>
-                </li>
-                <li class="nav-item bg-dark rounded-3 nav2li">
-                    <a class="nav-link" href="#" id = 'CatBar'>Heavy Metal</a>
-                </li>
-                <li class="nav-item bg-dark rounded-3 nav2li">
-                    <a class="nav-link" href="#" id = 'CatBar'>Rhythm and Blues</a>
+                  <a class="nav-link btn-lg" href="#jazz" id = 'CatBar'>Jazz</a>
                 </li>
             </ul>
             <table class = "center">

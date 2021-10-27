@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<!--Search by Catergoy text-->
+<h2 class = "text-center pad">Search All Categories</h2>
+<!--Catergory Nav Bar-->
+<ul class="margin nav justify-content-center">
+    {% if rockEvent is defined and rockEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+      <a class="nav-link active" href="#rock" id = 'CatBar'>Rock</a>
+    </li>
+    {% endif %}
+    {% if popEvent is defined and popEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+      <a class="nav-link" href="#pop" id = 'CatBar'>Pop</a>
+    </li>
+    {% endif %}
+    {% if jazzEvent is defined and jazzEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+      <a class="nav-link" href="#jazz" id = 'CatBar'>Jazz</a>
+    </li>
+    {% endif %}
+    {% if countryEvent is defined and countryEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+        <a class="nav-link" href="#country" id = 'CatBar'>Country</a>
+    </li>
+    {% endif %}
+    {% if electronicEvent is defined and electronicEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+        <a class="nav-link" href="#Electronic" id = 'CatBar'>Electronic</a>
+    </li>
+    {% endif %}
+    {% if funkEvent is defined and funkEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+        <a class="nav-link" href="#funk" id = 'CatBar'>Funk</a>
+    </li>
+    {% endif %}
+    {% if reggaeEvent is defined and reggaeEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+        <a class="nav-link" href="#reggae" id = 'CatBar'>Reggae</a>
+    </li>
+    {% endif %}
+    {% if heavyEvent is defined and heavyEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+        <a class="nav-link" href="#hm" id = 'CatBar'>Heavy Metal</a>
+    </li>
+    {% endif %}
+    {% if rythemEvent is defined and rythemEvent|length > 0 %}
+    <li class="nav-item bg-dark rounded-3 nav2li">
+        <a class="nav-link" href="#rnb" id = 'CatBar'>Rhythm and Blues</a>
+    </li>
+    {% endif %}
+</ul>
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+{% if rockEvent is defined and rockEvent|length > 0 %}
+<!--Row 1 ROCK category-->
+<h2 class = "text-center margin4" id="rock"><b><u>Rock Music Events</u></b></h2>
+<div class="row">
+    {% for rockEvent in rockEvent  %}
+    <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <img src="{{rockEvent.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title">{{rockEvent.name}}</h4>
+            <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
+            <p class="card-text">{{rockEvent.description}}</p>
+            <a href="{{url_for('events.show', id=rockEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!--Row 1 POP category-->
+<!--dividing line-->
+{% if popEvent is defined and popEvent|length > 0 %}
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+
+<h2 class = "text-center margin4 " id="pop"><b><u>Pop Music Events</u></b></h2>
+<div class="row">
+    {% for popEvent in popEvent  %}
+    <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <img src="{{popEvent.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title">{{popEvent.name}}</h4>
+            <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
+            <p class="card-text">{{popEvent.description}}</p>
+            <a href="{{url_for('events.show', id=popEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!--Row 1 Jazz category-->
+<!--dividing line-->
+{% if jazzEvent is defined and jazzEvent|length > 0 %}
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+<h2 class = "text-center margin4 " id="jazz"><b><u>Jazz Music Events</u></b></h2>
+<div class="row">
+    {% for jazzEvent in jazzEvent %}
+    <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <img src="{{jazzEvent.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h4 class="card-title">{{jazzEvent.name}}</h4>
+            <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
+            <p class="card-text">{{jazzEvent.description}}</p>
+            <a href="{{url_for('events.show', id=jazzEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+    
+</div>
+<!--Row 1 Country category-->
+{% if countryEvent is defined and countryEvent|length > 0 %}
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+
+<div class="row">
+    <h2 class = "text-center margin4 " id="country"><b><u>Country Music Events</u></b></h2>
+        {% for countryEvent in countryEvent %}
+        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{countryEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{countryEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{countryEvent.status}}</h6>
+                <p class="card-text">{{countryEvent.description}}</p>
+                <a href="{{url_for('events.show', id=countryEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<!--Row 1 Electronic category-->
+{% if electronicEvent is defined and electronicEvent|length > 0 %}
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+
+<div class="row">
+    <h2 class = "text-center margin4 " id="Electronic"><b><u>Electronic Music Events</u></b></h2>
+        {% for electronicEvent in electronicEvent %}
+        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{electronicEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{electronicEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{electronicEvent.status}}</h6>
+                <p class="card-text">{{electronicEvent.description}}</p>
+                <a href="{{url_for('events.show', id=electronicEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<!--Row 1 Funk category-->
+{% if funkEvent is defined and funkEvent|length > 0 %}
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+
+
+<div class="row">
+    
+    <h2 class = "text-center margin4 " id="funk"><b><u>Funk Music Events</u></b></h2>
+        {% for funkEvent in funkEvent %}
+        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{funkEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{funkEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{funkEvent.status}}</h6>
+                <p class="card-text">{{funkEvent.description}}</p>
+                <a href="{{url_for('events.show', id=funkEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<!--Row 1 Reggae category-->
+    {% if reggaeEvent is defined and reggaeEvent|length > 0 %}
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+
+<div class="row">
+    <h2 class = "text-center margin4 " id="reggae"><b><u>Reggae Music Events</u></b></h2>
+        {% for reggaeEvent in reggaeEvent %}
+        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{reggaeEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{reggaeEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{reggaeEvent.status}}</h6>
+                <p class="card-text">{{reggaeEvent.description}}</p>
+                <a href="{{url_for('events.show', id=reggaeEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+    {% if heavyEvent is defined and heavyEvent|length > 0 %}
+<!--Row 1 Heavy Metal category-->
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+<div class="row">
+    
+    <h2 class = "text-center margin4 " id="hm"><b><u>Heavy Metal Music Events</u></b></h2>
+        {% for heavymetalEvent in heavymetalEvent %}
+        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{heavyEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{heavyEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{heavyEvent.status}}</h6>
+                <p class="card-text">{{heavyEvent.description}}</p>
+                <a href="{{url_for('events.show', id=heavyEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+    {% if rythemEvent is defined and rythemEvent|length > 0 %}
+<!--Row 1 Rhythm and Blues category-->
+<table class = "center">
+    <tr style="border-bottom: 1px dotted silver;">
+        <td style="width:1500px"></td>
+        <td style="width:200px"></td>
+    </tr>
+</table>
+
+
+<div class="row">
+   
+    <h2 class = "text-center margin4 " id="rnb"><b><u>Rhythm and Blues Music Events</u></b></h2>
+        {% for rythemEvent in rythemEvent %}
+        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{rythemEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{rythemEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{rythemEvent.status}}</h6>
+                <p class="card-text">{{rythemEvent.description}}</p>
+                <a href="{{url_for('events.show', id=rythemEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

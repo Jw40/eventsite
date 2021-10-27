@@ -6,7 +6,7 @@ from wtforms.fields.core import SelectField
 from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
-Categories_List = ('Rock', 'Pop', 'Jazz')
+Categories_List = ('Rock', 'Pop', 'Jazz', 'Country','Electronic', 'Funk', 'Reggae', 'Heavy Metal', 'Rhythm and Blues')
 Status_List = ('Upcoming', 'Booked', 'Canceled', 'Inactive')
 
 #creates the login information
