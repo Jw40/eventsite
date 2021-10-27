@@ -5,7 +5,7 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
 from .models import Booking, Event, Comment, Event_Status
-from .forms import EventForm, CommentForm, BookingHistoryForm, Status_List
+from .forms import EventForm, CommentForm, BookingHistoryForm, BookingForm, Status_List
 from . import db
 import os
 from werkzeug.utils import secure_filename
@@ -89,25 +89,23 @@ def comment(event):
     # using redirect sends a GET request to event.show
     return redirect(url_for('events.show', id=event))
 
-@bp.route('/booking', methods = ['GET', 'POST'])
+@bp.route('/<event>/booking', methods = ['GET', 'POST'])
 @login_required
-def booking():
-  print('Method type: ', request.method)
-  form = EventForm()
+def booking(event):
+  form = BookingForm()
+  #get the event object associated to the page
+  event_obj = Event.query.filter_by(id=event).first()
   if form.validate_on_submit():
-    #call the function that checks and returns image
-    db_file_path=check_upload_file(form)
-    event=Event(name=form.name.data, description=form.description.data, 
-    image=db_file_path, date=form.date.data, venue=form.venue.data, price=form.price.data, quota=form.ticket_num.data)
-    # add the object to the db session
-    db.session.add(event)
-    # commit to the database
+    #get the booking details from the modal form
+    booking = Booking(quantity = form.quantity.data,
+                      user_id = current_user,
+                      price = form.quantity.data * event_obj.price,
+                      events_id = event_obj)
+
+    db.session.add(booking)
     db.session.commit()
-    print('Successfully created new event')
-    flash('Sucessfully Created New Event.')
-    #Always end with redirect when form is valid
-    return redirect(url_for('events.create'))
-  return render_template('events/create.html', form=form)
+
+    return redirect(url_for('events.show', id=event))
 
 @bp.route('/booking_history', methods = ['GET', 'POST'])
 @login_required
