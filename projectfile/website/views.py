@@ -40,3 +40,8 @@ def search():
     else:
         flash("No Results Found.")
         return redirect(url_for('main.index'))
+
+@mainbp.route('/help')
+def help():
+    return render_template('help.html') 
+

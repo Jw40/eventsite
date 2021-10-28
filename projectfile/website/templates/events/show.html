@@ -76,22 +76,9 @@
                   <p class="text-center">Amount of tickets:
                   </p>
                   <div class="">
+                  <!-- this is showing comment form for some reason, i think this is because there is already a form on this page? -->
+                  {{wtf.quick_form(form,"/events/{0}/booking".format(event.id), button_map={'submit':'success'})}}  
 
-                    <p>
-                      </p><div class="input-group">
-                          <span class="input-group-btn">
-                              <button type="button" class="btn btn-danger btn-number"  data-type="minus" data-field="quant[2]">-
-                                <span class="glyphicon glyphicon-minus"></span>
-                              </button>
-                          </span>
-                          <input type="text" name="quant[2]" class="form-control input-number" value="1" min="1" max="100">
-                          <span class="input-group-btn">
-                              <button type="button" class="btn btn-success " data-type="plus" data-field="quant[2]">+
-                                  <span class="glyphicon glyphicon-plus"></span>
-                              </button>
-                          </span>
-                      </div>
-                  <p></p>
                 </div>
                   <p class="text-center card margintop">Ticket Price:<strong>{{event.price}}</strong></p>
                   <p class="text-center card margintop">Total (AUD): <strong>need to figure out</strong></p>
@@ -112,7 +99,7 @@
     <hr>  
 
     <div>
-
+      <!---->
       <div class="navigation text-center center">
         <p>Search Events (this should be removed, it is redundant)</p>
         <a href="" class="nav_btn">1</a>
@@ -130,20 +117,21 @@
 
             link[i].href = '/events/'+(i+1);}
       </script>
-    </div>
+    </div> 
+    
  
     <!-- Comments -->  
     <div class="row">  
-      <div class="col-md-12">  
+      <div class="col-md-2 text-center center">  
         <h2>Comments</h1>  
       </div>  
     </div>  
  
-    <div class="row border-bottom pad"> 
+    <div class="row col-lg-8 col-md-6 col-sm-12 border-bottom card2"> 
       {{wtf.quick_form(form,"/events/{0}/comment".format(event.id), button_map={'submit':'success'})}} 
       {% for comment in event.comments %}
-      <div class="card col-md-12 pad" id="Comments">  
-        <b>{{comment.user.name}} <span class="ml-2 text-muted">{{comment.created_at.strftime("%d %B, %Y")}}</span></b>&#128231
+      <div class="card col-lg-12 col-md-8 col-sm-12 pad" id="Comments">  
+        <b >{{comment.user.name}} <span class="ml-2 text-muted">{{comment.created_at.strftime("%d %B, %Y")}}</span></b>&#128231
         <p>{{comment.text}}</p>  
       </div> 
       {% endfor %} 

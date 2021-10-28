@@ -92,19 +92,22 @@ def comment(event):
 @bp.route('/<event>/booking', methods = ['GET', 'POST'])
 @login_required
 def booking(event):
-  form = BookingForm()
+  form1 = BookingForm()
   #get the event object associated to the page
   event_obj = Event.query.filter_by(id=event).first()
-  if form.validate_on_submit():
+  if form1.validate_on_submit():
     #get the booking details from the modal form
-    booking = Booking(quantity = form.quantity.data,
+    booking = Booking(quantity = form1.quantity.data,
                       user_id = current_user,
-                      price = form.quantity.data * event_obj.price,
-                      events_id = event_obj)
+                      price = form1.quantity.data,
+                      events_id = event_obj.id)
 
     db.session.add(booking)
     db.session.commit()
 
+    return redirect(url_for('events.show', id=event))
+  else:
+    print('Failed to Book')
     return redirect(url_for('events.show', id=event))
 
 @bp.route('/booking_history', methods = ['GET', 'POST'])

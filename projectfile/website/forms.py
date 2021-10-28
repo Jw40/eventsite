@@ -35,7 +35,6 @@ class RegisterForm(FlaskForm):
 ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 
 #Create new event
-#Create new event
 class EventForm(FlaskForm):
   name = StringField(u'Event Name', validators=[InputRequired()])
   artist = StringField('Artist(s)', validators=[InputRequired()])
@@ -61,8 +60,8 @@ class EventForm(FlaskForm):
 
 #create BookingForm
 class BookingForm(FlaskForm):
-    quantity = IntegerField('Quantity', validators=[InputRequired()], min = 1)
-    submit = SubmitField('Book tickets')
+  quantity = IntegerField('Quantity', validators=[InputRequired()])
+  submit = SubmitField('Book tickets')
 
 #create CommentForm
 #User comment
