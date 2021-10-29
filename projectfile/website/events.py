@@ -18,8 +18,9 @@ bp = Blueprint('events', __name__, url_prefix='/events')
 def show(id):
   event = Event.query.filter_by(id=id).first()
   # create the comment form
+  bform = BookingForm()
   cform = CommentForm()    
-  return render_template('events/show.html', event=event, form=cform)
+  return render_template('events/show.html', event=event, cform=cform, bform=bform)
 
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required

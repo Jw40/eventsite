@@ -77,7 +77,7 @@
                   </p>
                   <div class="">
                   <!-- this is showing comment form for some reason, i think this is because there is already a form on this page? -->
-                  {{wtf.quick_form(form,"/events/{0}/booking".format(event.id), button_map={'submit':'success'})}}  
+                  {{wtf.quick_form(bform,"/events/{0}/booking".format(event.id), button_map={'submit':'success'})}}  
 
                 </div>
                   <p class="text-center card margintop">Ticket Price:<strong>{{event.price}}</strong></p>
@@ -128,7 +128,7 @@
     </div>  
  
     <div class="row col-lg-8 col-md-6 col-sm-12 border-bottom card2"> 
-      {{wtf.quick_form(form,"/events/{0}/comment".format(event.id), button_map={'submit':'success'})}} 
+      {{wtf.quick_form(cform,"/events/{0}/comment".format(event.id), button_map={'submit':'success'})}} 
       {% for comment in event.comments %}
       <div class="card col-lg-12 col-md-8 col-sm-12 pad" id="Comments">  
         <b >{{comment.user.name}} <span class="ml-2 text-muted">{{comment.created_at.strftime("%d %B, %Y")}}</span></b>&#128231
