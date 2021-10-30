@@ -43,7 +43,22 @@
                   <h5>Event Description:</h5>
                   <p>{{event.description}}</p>
                 </div>
+                {% for event in event.status %}
+                {% if event.status == 'Canceled' or event.status == 'Booked' or event.status == 'Inactive'%}
                 <!-- Button trigger modal -->
+                <div class="container pad">
+                  <div class="row">
+                    <div class="col text-center">
+                      <a href="#">
+                        <button type="button text-center" class="btn btn-secondary" data-bs-toggle="modal"
+                          data-bs-target="#exampleModal" disabled>
+                          Book Now
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                </div> 
+                {% else %}
                 <div class="container pad">
                   <div class="row">
                     <div class="col text-center">
@@ -56,6 +71,8 @@
                     </div>
                   </div>
                 </div> 
+                {% endif %}
+                {% endfor %} 
               </div>  
             </div>  
           </div>  

@@ -99,13 +99,13 @@ def booking(event):
   if form1.validate_on_submit():
     #get the booking details from the modal form
     booking = Booking(quantity = form1.quantity.data,
-                      user_id = current_user,
+                      user_id = current_user.id,
                       price = form1.quantity.data,
                       events_id = event_obj.id)
 
     db.session.add(booking)
     db.session.commit()
-
+    print('Successfully Booked!')
     return redirect(url_for('events.show', id=event))
   else:
     print('Failed to Book')
