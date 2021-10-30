@@ -117,6 +117,19 @@ def booking_history():
   records = db.session.query(Booking, Event).filter(Booking.events_id == Event.id).filter_by(user_id=current_user.id)
   return render_template('events/booking_history.html', records = records)
 
-
+@bp.route('/delete_event/<id>')
+def delete_event(id):
+      event_delete = Event.query.get(id)
+      if not event_delete:
+            flash("Event is not exist")
+      else:
+            try:
+              db.session.delete(event_delete)
+              db.session.commit()
+              flash("You have delete event sucessfully")
+            except Exception as e:
+              print(e)
+              db.session.rollback
+      return redirect('/')
 
 #place categroy find in when viewing place if 

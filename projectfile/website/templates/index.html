@@ -61,6 +61,7 @@
                         <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
                         <p class="card-text">{{rockEvent.description}}</p>
                         <a href="{{url_for('events.show', id=rockEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+                        <a href="{{url_for('events.delete_event', id=rockEvent.id)}}" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -80,6 +81,7 @@
                         <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
                         <p class="card-text">{{popEvent.description}}</p>
                         <a href="{{url_for('events.show', id=popEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+                        <a href="{{url_for('events.delete_event', id=rockEvent.id)}}" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -99,6 +101,7 @@
                         <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
                         <p class="card-text">{{jazzEvent.description}}</p>
                         <a href="{{url_for('events.show', id=jazzEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+                        <a href="{{url_for('events.delete_event', id=rockEvent.id)}}" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
                 {% endfor %}
