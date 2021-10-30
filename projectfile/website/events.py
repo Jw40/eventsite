@@ -117,6 +117,42 @@ def booking_history():
   records = db.session.query(Booking, Event).filter(Booking.events_id == Event.id).filter_by(user_id=current_user.id)
   return render_template('events/booking_history.html', records = records)
 
+#Edit
+@bp.route('/edit_event/<id>', methods = ['GET', 'POST'])
+@login_required
+def edit_event(id):
+      form = EventForm()
+      event_to_edit = Event.query.get(id)
+      event_to_edit.name = request.form.get("name", False)
+      event_to_edit.artist = request.form.get("artist", False)
+      # if add event_to_edit.date, edit_event can not work
+      #event_to_edit.date = request.form.get("date", False)
+      event_to_edit.venue = request.form.get("venue", False)
+      event_to_edit.venue_address = request.form.get("venue_address", False)
+      event_to_edit.city = request.form.get("city", False)
+      event_to_edit.state = request.form.get("state", False)
+      event_to_edit.zipcode = request.form.get("zipcode", False)
+      event_to_edit.category = request.form.get("category", False)
+      #status cannot be changed as SelectField, but category can be changed
+      event_to_edit.event_status = request.form.get("event_status", False)
+      event_to_edit.description = request.form.get("description", False)
+      event_to_edit.price = request.form.get("price", False)
+      event_to_edit.ticket_num = request.form.get("ticket_num", False)
+      #image does not work
+      #event_to_edit.image = request.form.get("image", False)
+
+      try:
+        db.session.commit()
+        flash("Edit sucessfully")
+        return render_template('events/edit.html',
+        form = form,
+        event_to_edit = event_to_edit)
+      except Exception as e:
+        print(e)
+        db.session.rollback
+      return redirect('/')
+  
+#Delete
 @bp.route('/delete_event/<id>')
 def delete_event(id):
       event_delete = Event.query.get(id)
