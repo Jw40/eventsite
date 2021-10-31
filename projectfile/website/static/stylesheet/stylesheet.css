@@ -13,7 +13,11 @@
     }
 
 }
-
+.card-img-top {
+    width: 100%;
+    height: 25vw;
+    object-fit: cover;
+}
 
 /*Jumbotron Image and placement*/
 .jumbotronback {
@@ -247,4 +251,8 @@ input#commentText {
 
 .margintop{
     margin-top: 20px;
+}
+
+.changeTextColour{
+    color:#f4a460;
 }

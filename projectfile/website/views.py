@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect,url_for, flash
-from .models import Event
+from .models import Event, Event_Status
 
 mainbp = Blueprint('main', __name__)
 #create sqlite query to select each category, example rockCategory = Event.query.filter(Event.category.like("Rock")).all()
@@ -35,7 +35,7 @@ def search():
     if request.args['search']:
         print(request.args['search'])
         dest = "%" + request.args['search'] + '%'
-        event = Event.query.filter(Event.description.like(dest)).all()
+        event = Event.query.filter(Event.description.like(dest) | Event.category.like(dest) | Event.name.like(dest)).all()
         flash(dest.replace("%",""), 'search_error')
         return render_template('search.html', event=event)
     else:

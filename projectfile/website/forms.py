@@ -7,7 +7,8 @@ from wtforms.validators import InputRequired, Length, Email, EqualTo
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 Categories_List = ('Rock', 'Pop', 'Jazz', 'Country','Electronic', 'Funk', 'Reggae', 'Heavy Metal', 'Rhythm and Blues')
-Status_List = ('Upcoming', 'Booked', 'Canceled', 'Inactive')
+Status_List = ['Upcoming', 'Booked', 'Canceled', 'Inactive']
+
 Ages_List = ('All Ages', '18+ Only')
 
 #creates the login information
@@ -49,7 +50,7 @@ class EventForm(FlaskForm):
   ages = SelectField('Age Limit', choices=[(ages, ages) for ages in Ages_List], validators=[InputRequired()])
   category = SelectField('Category', choices=[(category, category) for category in Categories_List], validators=[InputRequired()])
   #category = StringField('Category', validators=[InputRequired()])
-  event_status = SelectField('Status', choices=[(status, status) for status in Status_List], validators=[InputRequired()])
+  event_status = SelectField('Status', choices=[(status, status) for status in Status_List ], validators=[InputRequired()])
   #event_status = StringField('Status', validators=[InputRequired()])
   description = TextAreaField('Description', 
             validators=[InputRequired()])
