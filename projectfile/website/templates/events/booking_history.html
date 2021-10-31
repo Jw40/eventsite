@@ -25,7 +25,7 @@
                   <tr>
                    
                       <th scope="row"><b>{{record[0].booking_Id}}</b></th>
-                      <th scope="row">Booked</th>
+                      <th scope="row">{{record[1].status}}</th>
                       <th scope ="row"><a href="{{url_for('events.show', id=record[0].events_id)}}">{{record[1].name}}</a> 
                         <img src="{{record[1].image}}" class="card-img-top pad" alt="Responsive image"></th>
                       <th scope="row">{{record[0].quantity}}</th>
