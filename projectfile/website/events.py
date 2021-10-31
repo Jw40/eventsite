@@ -4,7 +4,7 @@
 
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
-from .models import Booking, Event, Comment, Event_Status
+from .models import Booking, Event, Comment, Event_Status, User
 from .forms import EventForm, CommentForm, BookingHistoryForm, BookingForm, Status_List
 from . import db
 import os
@@ -132,10 +132,11 @@ def booking_history():
   records = db.session.query(Booking, Event).filter(Booking.events_id == Event.id).filter_by(user_id=current_user.id)
   return render_template('events/booking_history.html', records = records)
 
-#Edit
+#edit
 @bp.route('/edit_event/<id>', methods = ['GET', 'POST'])
 @login_required
 def edit_event(id):
+      message = 'Sucessfully Change Event.'
       form = EventForm()
       event_to_edit = Event.query.get(id)
       event_to_edit.name = request.form.get("name", False)
@@ -147,6 +148,7 @@ def edit_event(id):
       event_to_edit.city = request.form.get("city", False)
       event_to_edit.state = request.form.get("state", False)
       event_to_edit.zipcode = request.form.get("zipcode", False)
+      event_to_edit.ages = request.form.get("ages", False)
       event_to_edit.category = request.form.get("category", False)
       #status cannot be changed as SelectField, but category can be changed
       event_to_edit.event_status = request.form.get("event_status", False)
@@ -154,33 +156,37 @@ def edit_event(id):
       event_to_edit.price = request.form.get("price", False)
       event_to_edit.ticket_num = request.form.get("ticket_num", False)
       #image does not work
-      #event_to_edit.image = request.form.get("image", False)
+      event_to_edit.image = request.form.get("image", False)
 
       try:
         db.session.commit()
-        flash("Edit sucessfully")
+        print('Successfully change event')
+        flash(message, 'edit')
         return render_template('events/edit.html',
         form = form,
         event_to_edit = event_to_edit)
       except Exception as e:
         print(e)
         db.session.rollback
-      return redirect('/')
+      return redirect('events/my_events.html')
   
-#Delete
+#delete
 @bp.route('/delete_event/<id>')
 def delete_event(id):
       event_delete = Event.query.get(id)
-      if not event_delete:
-            flash("Event is not exist")
-      else:
-            try:
-              db.session.delete(event_delete)
-              db.session.commit()
-              flash("You have delete event sucessfully", 'delete')
-            except Exception as e:
-              print(e)
-              db.session.rollback
-      return redirect(url_for('main.index'))
+      try:
+        db.session.delete(event_delete)
+        db.session.commit()
+      except Exception as e:
+        print(e)
+        db.session.rollback
+      return redirect(url_for('events.my_events'))
+
+#my event
+@bp.route('/my_events', methods = ['GET', 'POST'])
+@login_required
+def my_events():
+  records = db.session.query(User, Event).filter(User.id == Event.owner).filter_by(id=current_user.id)
+  return render_template('events/my_events.html', records = records)
 
 #place categroy find in when viewing place if 
