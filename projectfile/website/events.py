@@ -36,7 +36,7 @@ def create():
     db_file_path=check_upload_file(form)
     event=Event(name=form.name.data, description=form.description.data, artist=form.artist.data,
     image=db_file_path, date=form.date.data, venue=form.venue.data, venue_address=form.venue_address.data, 
-    city=form.city.data, state=form.state.data, zipcode=form.zipcode.data, price=form.price.data, 
+    city=form.city.data, state=form.state.data, zipcode=form.zipcode.data, price=round(form.price.data, 1), 
     quota=form.ticket_num.data, category = form.category.data, ages = form.ages.data, owner = current_user.id) #this now works changed .id
     
     #event_obj = Event.query.filter_by(id=event).first()  

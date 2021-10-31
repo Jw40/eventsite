@@ -3,6 +3,28 @@ from flask_login import UserMixin
 from . import db
 from datetime import datetime
 import re 
+
+
+from sqlalchemy.types import TypeDecorator, Numeric
+from decimal import Decimal
+
+class SafeNumeric(TypeDecorator):
+    """Adds quantization to Numeric."""
+
+    impl = Numeric
+
+    def __init__(self, *arg, **kw):
+        TypeDecorator.__init__(self, *arg, **kw)
+        self.quantize_int = - self.impl.scale
+        self.quantize = Decimal(10) ** self.quantize_int
+
+    def process_bind_param(self, value, dialect):
+        if isinstance(value, Decimal) and \
+            value.as_tuple()[2] < self.quantize_int:
+            value = value.quantize(self.quantize)
+        return value
+
+
 #users class
 class User(db.Model, UserMixin):
     __tablename__='users' # good practice to specify table name
@@ -36,7 +58,7 @@ class Event(db.Model):
     
     description = db.Column(db.String(200))
     
-    price = db.Column(db.Numeric(8))
+    price = (db.Column(db.Numeric(5,2)))
     quota = db.Column(db.Integer, default = 1)
     
     image = db.Column(db.String(400))
@@ -51,6 +73,7 @@ class Event(db.Model):
     #event_status = db.relationship('Event_Status', backref="events")
     def __repr__(self): #string print method
         return "<Name: {}>".format(self.name)
+
 
 
 #event_status class
@@ -90,3 +113,4 @@ class Booking(db.Model):
     #foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+   
