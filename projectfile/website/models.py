@@ -32,6 +32,7 @@ class Event(db.Model):
     state = db.Column(db.String(10))
     zipcode = db.Column(db.Integer)
     category = db.Column(db.String(20))
+    ages = db.Column(db.String(20))
     
     description = db.Column(db.String(200))
     
