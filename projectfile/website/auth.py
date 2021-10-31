@@ -22,10 +22,10 @@ def login():
         u1 = User.query.filter_by(name=user_name).first()
         #if there is no user with that name
         if u1 is None:
-            error='Incorrect user name'
+            error='Incorrect user name, Please try again.'
         #check the password - notice password hash function
         elif not check_password_hash(u1.password_hash, password): # takes the hash and password
-            error='Incorrect password'
+            error='Incorrect password, Please try again.'
         if error is None:
             #all good, set the login_user of flask_login to manage the user
             login_user(u1)
@@ -35,7 +35,7 @@ def login():
                 return redirect(url_for('main.index'))
             return redirect(nextp)
         else:
-            flash(error)
+            flash(error, 'login_error')
     return render_template('user.html', form=login_form, heading='Login')
 
 
@@ -52,11 +52,11 @@ def register():
         # Check if the user name already exists
         u1 = User.query.filter_by(name=uname).first()
         if u1:
-            flash('User name already exists, please login')
+            flash('User name already exists. Please login.', 'register_error')
             return redirect(url_for('auth.login'))
         email1 = User.query.filter_by(emailid = email).first()
         if email1:
-            flash('This email address has been registered, please use another one')
+            flash('This email address has been registered. Please try again.', 'register_error')
             return redirect(url_for('auth.login'))
         
         # Generate a password hash to store and commit the new user to the database

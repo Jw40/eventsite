@@ -36,9 +36,10 @@ def search():
         print(request.args['search'])
         dest = "%" + request.args['search'] + '%'
         event = Event.query.filter(Event.description.like(dest)).all()
+        flash(dest.replace("%",""), 'search_error')
         return render_template('search.html', event=event)
     else:
-        flash("No Results Found.")
+        flash("No Results Found.", 'search_error')
         return redirect(url_for('main.index'))
 
 @mainbp.route('/help')

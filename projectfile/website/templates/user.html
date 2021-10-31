@@ -10,7 +10,18 @@
 
 
 <div class="container-fluid">
-{% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages(category_filter=["register_error"]) %}
+{% if messages %}
+    {% for message in get_flashed_messages() %}
+    <div class ="alert alert-warning">
+        <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
+        {{message}}
+    </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% with messages = get_flashed_messages(category_filter=["login_error"]) %}
 {% if messages %}
     {% for message in get_flashed_messages() %}
     <div class ="alert alert-warning">

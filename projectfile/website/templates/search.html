@@ -3,9 +3,19 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
+
     <div class=" card2 container-fluid backgroundCustom">
         
-        <h3 class="pad margin1">Search Results:</h3>
+        <h3 class="pad margin1">Search Results for:
+            {% with messages = get_flashed_messages(category_filter=["search_error"]) %}
+        {% if messages %}
+            {% for message in get_flashed_messages() %}
+                {{message}}
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        </h3>
+        
         <div class="center row col-12 pad4">
         {% for event in event %}
             <div class="card img-fluid card-img-top rounded margin4">
