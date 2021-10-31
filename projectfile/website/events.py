@@ -17,7 +17,7 @@ bp = Blueprint('events', __name__, url_prefix='/events')
 @bp.route('/<id>')
 def show(id):
   event = Event.query.filter_by(id=id).first()
-  # create the comment form
+  # create the comment and booking forms
   bform = BookingForm()
   cform = CommentForm()    
   return render_template('events/show.html', event=event, cform=cform, bform=bform)
@@ -34,7 +34,7 @@ def create():
     event=Event(name=form.name.data, description=form.description.data, artist=form.artist.data,
     image=db_file_path, date=form.date.data, venue=form.venue.data, venue_address=form.venue_address.data, 
     city=form.city.data, state=form.state.data, zipcode=form.zipcode.data, price=form.price.data, 
-    quota=form.ticket_num.data, category = form.category.data, owner = current_user.id) #this now works changed .id
+    quota=form.ticket_num.data, category = form.category.data, ages = form.ages.data, owner = current_user.id) #this now works changed .id
     
     #event_obj = Event.query.filter_by(id=event).first()  
     
@@ -103,10 +103,15 @@ def booking(event):
                       price = form1.quantity.data,
                       events_id = event_obj.id)
 
-    db.session.add(booking)
-    db.session.commit()
-    print('Successfully Booked!')
-    return redirect(url_for('events.show', id=event))
+    # if you try to book more tickets than there are available, it won't book
+    if booking.quantity > event_obj.quota:
+        print('you cannot book that many tickets')
+        return redirect(url_for('events.show', id=event))
+    else:
+        db.session.add(booking)
+        db.session.commit()
+        print('Successfully Booked!')
+        return redirect(url_for('events.show', id=event))
   else:
     print('Failed to Book')
     return redirect(url_for('events.show', id=event))
