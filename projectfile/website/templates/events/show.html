@@ -15,8 +15,35 @@
     height: 50vw;
     object-fit: cover;
 }
-
 </style>
+
+
+  {% with messages = get_flashed_messages(category_filter=["event_error"]) %}
+  {% if messages %}
+  <div class="container-fluid margin2 pad"></div>
+      {% for message in get_flashed_messages() %}
+      <div class ="alert alert-warning">
+          <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
+          {{message}}
+      </div>
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+
+{% with messages = get_flashed_messages(category_filter=["comment"]) %}
+  {% if messages %}
+  <div class="container-fluid margin2 pad"></div>
+      {% for message in get_flashed_messages() %}
+      <div class ="alert alert-warning">
+          <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
+          {{message}}
+      </div>
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+
 <div class="container-fluid ">  
     <div class="row mt-1 mb-3">  
         <div class="col-md-12">  
@@ -91,21 +118,17 @@
               </div>
               <div class="modal-body">
                 <div class="center">
-                  <p class="text-center">Amount of tickets:
+                  <p class="text-center card">Ticket Price:<strong>${{event.price}}</strong></p>
+                  <p class="text-center">Enter amount of tickets.
                   </p>
-                  <div class="">
-                  <!-- this is showing comment form for some reason, i think this is because there is already a form on this page? -->
-                  {{wtf.quick_form(bform,"/events/{0}/booking".format(event.id), button_map={'submit':'success'})}}  
-
-                </div>
-                  <p class="text-center card margintop">Ticket Price:<strong>{{event.price}}</strong></p>
-                  <p class="text-center card margintop">Total (AUD): <strong>need to figure out</strong></p>
+                  <div class="pad">
+                    {{wtf.quick_form(bform,"/events/{0}/booking".format(event.id), button_map={'submit':'success'})}}  
+                  </div>
+                  <!-- <p class="text-center card margintop">Total (AUD): <strong>need to figure out</strong></p>-->
                 </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a href="{{url_for('events.show', id=event.id)}}" class="btn btn-success btn-md" id='topButton'><span
-                    class="glyphicon glyphicon-log-out"></span> Confirm</a>
               </div>
             </div>
           </div>

@@ -14,6 +14,7 @@ from flask_login import login_required, current_user
 
 bp = Blueprint('events', __name__, url_prefix='/events')
 
+#id
 @bp.route('/<id>')
 def show(id):
   event = Event.query.filter_by(id=id).first()
@@ -22,6 +23,7 @@ def show(id):
   cform = CommentForm()    
   return render_template('events/show.html', event=event, cform=cform, bform=bform)
 
+#create
 @bp.route('/create', methods = ['GET', 'POST'])
 @login_required
 def create():
@@ -48,12 +50,14 @@ def create():
     # commit to the database
     db.session.commit()
     print('Successfully created new event')
-    flash(message)
+    flash(message, 'event')
     #Always end with redirect when form is valid
-    return redirect(url_for('main.index'))
-  print('not validate')
+    return redirect(url_for('events.create'))
+  else:
+    print('not validate')
   return render_template('events/create.html', form=form)
 
+#fileupload
 def check_upload_file(form):
   #get file data from form  
   fp=form.image.data
@@ -68,6 +72,7 @@ def check_upload_file(form):
   fp.save(upload_path)
   return db_upload_path
 
+#comment
 @bp.route('/<event>/comment', methods = ['GET', 'POST'])
 @login_required  
 def comment(event):  
@@ -85,11 +90,12 @@ def comment(event):
       db.session.commit() 
 
       #flashing a message which needs to be handled by the html
-      #flash('Your comment has been added', 'success')  
+      flash('Successfully added comment.', 'comment')  
       print('Your comment has been added') 
     # using redirect sends a GET request to event.show
     return redirect(url_for('events.show', id=event))
 
+#booking
 @bp.route('/<event>/booking', methods = ['GET', 'POST'])
 @login_required
 def booking(event):
@@ -105,17 +111,21 @@ def booking(event):
 
     # if you try to book more tickets than there are available, it won't book
     if booking.quantity > event_obj.quota:
-        print('you cannot book that many tickets')
+        print('You cannot book that many tickets, Please Try again.')
+        flash('you cannot book that many tickets', 'event_error')
         return redirect(url_for('events.show', id=event))
     else:
         db.session.add(booking)
         db.session.commit()
         print('Successfully Booked!')
-        return redirect(url_for('events.show', id=event))
+        flash('Successfully Booked!', 'event_booking')
+        return redirect(url_for('main.thankyou', id=event))
   else:
     print('Failed to Book')
+    flash('Failed to Book!, Try again.', 'event_error')
     return redirect(url_for('events.show', id=event))
 
+#booking_history
 @bp.route('/booking_history', methods = ['GET', 'POST'])
 @login_required
 def booking_history():
@@ -167,10 +177,10 @@ def delete_event(id):
             try:
               db.session.delete(event_delete)
               db.session.commit()
-              flash("You have delete event sucessfully")
+              flash("You have delete event sucessfully", 'delete')
             except Exception as e:
               print(e)
               db.session.rollback
-      return redirect('/')
+      return redirect(url_for('main.index'))
 
 #place categroy find in when viewing place if 

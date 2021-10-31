@@ -64,7 +64,7 @@ def register():
         new_user = User(name=uname, password_hash=pwd_hash, emailid=email)
         db.session.add(new_user)
         db.session.commit()
-        flash(message)
+        flash(message, 'register_error')
         return redirect(url_for('auth.login'))
 
     else:    

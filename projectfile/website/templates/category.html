@@ -51,104 +51,83 @@
     </li>
     {% endif %}
 </ul>
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
+    <hr>
 
-{% if rockEvent is defined and rockEvent|length > 0 %}
-<!--Row 1 ROCK category-->
-<h2 class = "text-center margin4" id="rock"><b><u>Rock Music Events</u></b></h2>
-<div class="row">
-    {% for rockEvent in rockEvent  %}
-    <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
-        <img src="{{rockEvent.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h4 class="card-title">{{rockEvent.name}}</h4>
-            <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
-            <p class="card-text">{{rockEvent.description}}</p>
-            <a href="{{url_for('events.show', id=rockEvent.id)}}" class="btn btn-primary">Find Tickets</a>
-            <a href="{{url_for('events.delete_event', id=rockEvent.id)}}" class="btn btn-danger">Delete</a>
-            <a href="{{url_for('events.edit_event', id=rockEvent.id)}}" class="btn btn-success">Edit</a>
+<div class = "container-fluid">
+
+    <!--Row 1 ROCK category-->
+    {% if rockEvent is defined and rockEvent|length > 0 %}
+    <h2 class = "text-center margin4" id="rock"><b><u>Rock Music Events</u></b></h2>
+    <div class="row">
+        {% for rockEvent in rockEvent  %}
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{rockEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{rockEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
+                <p class="card-text">{{rockEvent.description}}</p>
+                <a href="{{url_for('events.show', id=rockEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+                <a href="{{url_for('events.delete_event', id=rockEvent.id)}}" class="btn btn-danger">Delete</a>
+                <a href="{{url_for('events.edit_event', id=rockEvent.id)}}" class="btn btn-success">Edit</a>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% endif %}
+    {% endif %}
 
-<!--Row 1 POP category-->
-<!--dividing line-->
-{% if popEvent is defined and popEvent|length > 0 %}
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-
-<h2 class = "text-center margin4 " id="pop"><b><u>Pop Music Events</u></b></h2>
-<div class="row">
-    {% for popEvent in popEvent  %}
-    <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
-        <img src="{{popEvent.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h4 class="card-title">{{popEvent.name}}</h4>
-            <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
-            <p class="card-text">{{popEvent.description}}</p>
-            <a href="{{url_for('events.show', id=popEvent.id)}}" class="btn btn-primary">Find Tickets</a>
-            <a href="{{url_for('events.delete_event', id=popEvent.id)}}" class="btn btn-danger">Delete</a>
-            <a href="{{url_for('events.edit_event', id=popEvent.id)}}" class="btn btn-success">Edit</a>
+    <!--Row 2 POP category-->
+    {% if popEvent is defined and popEvent|length > 0 %}
+    <!--dividing line-->
+    <hr>
+    <h2 class = "text-center margin4 " id="pop"><b><u>Pop Music Events</u></b></h2>
+    <div class="row">
+        {% for popEvent in popEvent  %}
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{popEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{popEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
+                <p class="card-text">{{popEvent.description}}</p>
+                <a href="{{url_for('events.show', id=popEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+                <a href="{{url_for('events.delete_event', id=popEvent.id)}}" class="btn btn-danger">Delete</a>
+                <a href="{{url_for('events.edit_event', id=popEvent.id)}}" class="btn btn-success">Edit</a>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% endif %}
+    {% endif %}
 
-<!--Row 1 Jazz category-->
-<!--dividing line-->
-{% if jazzEvent is defined and jazzEvent|length > 0 %}
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-<h2 class = "text-center margin4 " id="jazz"><b><u>Jazz Music Events</u></b></h2>
-<div class="row">
-    {% for jazzEvent in jazzEvent %}
-    <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
-        <img src="{{jazzEvent.image}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h4 class="card-title">{{jazzEvent.name}}</h4>
-            <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
-            <p class="card-text">{{jazzEvent.description}}</p>
-            <a href="{{url_for('events.show', id=jazzEvent.id)}}" class="btn btn-primary">Find Tickets</a>
-            <a href="{{url_for('events.delete_event', id=jazzEvent.id)}}" class="btn btn-danger">Delete</a>
-            <a href="{{url_for('events.edit_event', id=jazzEvent.id)}}" class="btn btn-success">Edit</a>
+    <!--Row 3 Jazz category-->
+    {% if jazzEvent is defined and jazzEvent|length > 0 %}
+    <!--dividing line-->
+    <hr>
+    <h2 class = "text-center margin4 " id="jazz"><b><u>Jazz Music Events</u></b></h2>
+    <div class="row">
+        {% for jazzEvent in jazzEvent %}
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+            <img src="{{jazzEvent.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{jazzEvent.name}}</h4>
+                <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
+                <p class="card-text">{{jazzEvent.description}}</p>
+                <a href="{{url_for('events.show', id=jazzEvent.id)}}" class="btn btn-primary">Find Tickets</a>
+                <a href="{{url_for('events.delete_event', id=jazzEvent.id)}}" class="btn btn-danger">Delete</a>
+                <a href="{{url_for('events.edit_event', id=jazzEvent.id)}}" class="btn btn-success">Edit</a>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-{% endif %}
+    {% endif %}
     
-</div>
-<!--Row 1 Country category-->
-{% if countryEvent is defined and countryEvent|length > 0 %}
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
 
-
-<div class="row">
+    <!--Row 4 Country category-->
+    {% if countryEvent is defined and countryEvent|length > 0 %}
+    <!--dividing line-->
+    <hr>
     <h2 class = "text-center margin4 " id="country"><b><u>Country Music Events</u></b></h2>
+    <div class="row">
         {% for countryEvent in countryEvent %}
-        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
             <img src="{{countryEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{countryEvent.name}}</h4>
@@ -160,23 +139,18 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     {% endif %}
-</div>
+    
 
-<!--Row 1 Electronic category-->
-{% if electronicEvent is defined and electronicEvent|length > 0 %}
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-
-<div class="row">
+    <!--Row 5 Electronic category-->
+    {% if electronicEvent is defined and electronicEvent|length > 0 %}
+    <!--dividing line-->
+    <hr>
     <h2 class = "text-center margin4 " id="Electronic"><b><u>Electronic Music Events</u></b></h2>
+    <div class="row">
         {% for electronicEvent in electronicEvent %}
-        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
             <img src="{{electronicEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{electronicEvent.name}}</h4>
@@ -188,25 +162,17 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     {% endif %}
-</div>
 
-<!--Row 1 Funk category-->
-{% if funkEvent is defined and funkEvent|length > 0 %}
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-
-
-<div class="row">
-    
+    <!--Row 6 Funk category-->
+    {% if funkEvent is defined and funkEvent|length > 0 %}
+    <!--dividing line-->
+    <hr>
     <h2 class = "text-center margin4 " id="funk"><b><u>Funk Music Events</u></b></h2>
+    <div class="row">
         {% for funkEvent in funkEvent %}
-        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
             <img src="{{funkEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{funkEvent.name}}</h4>
@@ -218,22 +184,17 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     {% endif %}
-</div>
-<!--Row 1 Reggae category-->
+
+    <!--Row 7 Reggae category-->
     {% if reggaeEvent is defined and reggaeEvent|length > 0 %}
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-
-<div class="row">
+    <!--dividing line-->
+    <hr>
     <h2 class = "text-center margin4 " id="reggae"><b><u>Reggae Music Events</u></b></h2>
+    <div class="row">
         {% for reggaeEvent in reggaeEvent %}
-        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
             <img src="{{reggaeEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{reggaeEvent.name}}</h4>
@@ -245,23 +206,17 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     {% endif %}
-</div>
 
+    <!--Row 8 heavyEvent category-->
     {% if heavyEvent is defined and heavyEvent|length > 0 %}
-<!--Row 1 Heavy Metal category-->
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-<div class="row">
-    
+    <!--dividing line-->
+    <hr>
     <h2 class = "text-center margin4 " id="hm"><b><u>Heavy Metal Music Events</u></b></h2>
-        {% for heavymetalEvent in heavymetalEvent %}
-        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+    <div class="row">
+        {% for heavyEvent in heavyEvent %}
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
             <img src="{{heavyEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{heavyEvent.name}}</h4>
@@ -273,24 +228,17 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     {% endif %}
-</div>
 
+    <!--Row 9 rythemEvent category-->
     {% if rythemEvent is defined and rythemEvent|length > 0 %}
-<!--Row 1 Rhythm and Blues category-->
-<table class = "center">
-    <tr style="border-bottom: 1px dotted silver;">
-        <td style="width:1500px"></td>
-        <td style="width:200px"></td>
-    </tr>
-</table>
-
-
-<div class="row">
-   
-    <h2 class = "text-center margin4 " id="rnb"><b><u>Rhythm and Blues Music Events</u></b></h2>
+    <!--dividing line-->
+    <hr>
+    <h2 class ="text-center margin4 " id="rnb"><b><u>Rhythm and Blues Music Events</u></b></h2>
+    <div class="row">
         {% for rythemEvent in rythemEvent %}
-        <div class="col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
+        <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
             <img src="{{rythemEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{rythemEvent.name}}</h4>
@@ -302,6 +250,18 @@
             </div>
         </div>
         {% endfor %}
+    </div>
     {% endif %}
+
+    <!--bottom dividing line-->
+    <hr>
+
+    <!--back to top button-->
+    <div class = "col text-center">
+        <a href="#" class="btn text-center buttonCustom2">Back to top</a>
+    </div>
+    
+<!--end container-->
 </div>
+
 {% endblock %}

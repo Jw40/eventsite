@@ -46,3 +46,6 @@ def search():
 def help():
     return render_template('help.html') 
 
+@mainbp.route('/thankyou')
+def thankyou():
+    return render_template('thankyou.html') 

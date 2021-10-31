@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 
 {% block header %}
-
+        {% with messages = get_flashed_messages(category_filter=["delete"]) %}
+        {% if messages %}
+        <div class="container-fluid margin pad">
+            {% for message in get_flashed_messages() %}
+            <div class ="alert alert-warning">
+                <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
         {% for event in event %}
             {% if 'Red Hot Chilli Peppers' in event.name %}
           <!--Jumbotron-->
@@ -19,6 +30,7 @@
 {% endblock %}
    
 {% block content %} 
+
         
         <!--Welcome Message-->
         <h1 class = "text-center">Welcome to the MusicEvents Website! </h1>

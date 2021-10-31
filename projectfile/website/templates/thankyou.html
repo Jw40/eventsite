@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% with messages = get_flashed_messages(category_filter=["event_booking"]) %}
+  {% if messages %}
+  <div class="container-fluid margin2 pad"></div>
+      {% for message in get_flashed_messages() %}
+      <div class ="alert alert-warning">
+          <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
+          {{message}}
+      </div>
+      {% endfor %}
+  {% endif %}
+  {% endwith %}
+  </div>
+    
+    <!-- Help details -->
+    <div class="jumbotron text-center">
+        <h1 class="display-3">Thank You!</h1>
+        <p class="lead"><strong>Please check your email</strong> for further instructions on how to receive your tickets.</p>
+        <hr>
+        <p>
+          Having trouble? <a href="/help">Contact us</a>
+        </p>
+        <p class="lead">
+          <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+        </p>
+    </div>
+
+{% endblock %}
