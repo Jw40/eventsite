@@ -16,8 +16,8 @@
 }
 
 </style>
-
-  <div class="container-fluid margin2 pad">
+<div class="container-fluid backgroundCustom margin card2">
+  <div class="container-fluid margin2 pad ">
     {% with messages = get_flashed_messages(category_filter=["event"]) %}
     {% if messages %}
         {% for message in get_flashed_messages() %}
@@ -33,21 +33,15 @@
   <div class="container">
     <div class="row mt-5">
       <div class="card col-md-12">
-
-        <h1 class = "text-center">Add New Event</h1>
-        <p class = "text-center">Enter a Event that you advertise to customers.</p>
-
-
+        <h1 class = "text-center changeFont">Add New Event</h1>
+        <h6 class = "text-center changeFont">Enter a Event that you advertise to customers.</h6>
         <div class="row ">
           <div class="card col-12 col-lg-10 col-md-8 col-sm-12 form1">
               {{ wtf.quick_form(form, button_map={'submit':'success'}) }}
           </div>
-      </div>
-        
-
-        
+        </div>
       </div>
     </div>
   </div>
-
+</div>
 {% endblock %}

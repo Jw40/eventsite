@@ -9,6 +9,7 @@ from .forms import EventForm, CommentForm, BookingHistoryForm, BookingForm, Stat
 from . import db
 import os
 from werkzeug.utils import secure_filename
+import re
 #additional import:
 from flask_login import login_required, current_user
 
@@ -43,9 +44,10 @@ def create():
     # add the object to the db session
     db.session.add(event)
     db.session.commit()
-
-    event_id = Event.query.filter_by(id=event.id).first().id  
-    event_status =Event_Status(status = form.event_status.data, events_id =event_id)
+    event_id = Event.query.filter_by(id=event.id).first().id
+    status1 = form.event_status.data  
+    print(status1)
+    event_status =Event_Status(status = status1, events_id =event_id)
     db.session.add(event_status)
     # commit to the database
     db.session.commit()

@@ -2,7 +2,7 @@
 from flask_login import UserMixin
 from . import db
 from datetime import datetime
-
+import re 
 #users class
 class User(db.Model, UserMixin):
     __tablename__='users' # good practice to specify table name
@@ -59,10 +59,10 @@ class Event_Status(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
     status = db.Column(db.String(10))
-    
-
     def __repr__(self):
-        return " {} ".format(self.status)
+        #str1 = str(self.status)[+1:-1]
+        #print(str1)
+        return "{}".format(self.status)
 
 #comments class
 class Comment(db.Model):

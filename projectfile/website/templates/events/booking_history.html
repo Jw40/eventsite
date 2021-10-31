@@ -3,12 +3,14 @@
 {% block content %}
 
 <div class="container-fluid backgroundCustom margin card2">
-    <h2 class = "text-center pad changeFont"><strong>Booking History</strong></h2>
+    
 
    
     
     <div class = "row pad">
       <div class="col-12 card center pad" style="width: 62rem;">
+        <h1 class = "text-center pad changeFont"><strong>Booking History</strong></h1>
+        <hr>
         <div class="container">
           <div class="col-md-12">
             <table class="table">
@@ -27,11 +29,11 @@
                   <tr>
                    
                       <th scope="row"><b>{{record[0].booking_Id}}</b></th>
-                      <th scope="row">Upcoming</th>
+                      <th scope="row">{{record[1].status}}</th>
                       <th scope ="row"><a href="{{url_for('events.show', id=record[0].events_id)}}">{{record[1].name}}</a> 
-                        <img src="{{record[1].image}}" class="center" alt="Responsive image"></th>
+                        <img src="{{record[1].image}}" class="center card2" alt="Responsive image"></th>
                       <th scope="row">{{record[0].quantity}}</th>
-                      <th scope="row">${{record[0].price}}(GST Inc.)</th> 
+                      <th scope="row">${{record[1].price * record[0].quantity}}(GST Inc.)</th> 
                       <th scope="row">{{record[0].booking_date}}</th>
                   </tr>
                 {% endfor %}
@@ -41,5 +43,5 @@
         </div>
       </div>
     </div>
-
+</div>
 {% endblock %}
