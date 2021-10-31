@@ -116,12 +116,30 @@ def booking(event):
         print('You cannot book that many tickets, Please Try again.')
         flash('you cannot book that many tickets', 'event_error')
         return redirect(url_for('events.show', id=event))
+
+    elif booking.quantity == event_obj.quota:
+        event_obj.quota = event_obj.quota - booking.quantity
+        db.session.add(booking)
+
+        #this needs work (updating status in Event_Status column in db)
+        event_status = db.session.query(Event_Status, Event).filter(Event.id == Event_Status.events_id).filter_by(id=event_obj.id)
+        event_status.status = 'Booked'
+        print(event_status.status)
+        db.session.commit()
+
+
+        print('Successfully Booked! - status is now fully booked.')
+        flash('Successfully Booked!, Event is now fully Booked.', 'event_booking')
+        return redirect(url_for('main.thankyou', id=event)) 
+    #could change this to elif booking.quanity > event_oby.quota then create booking and -quantity 
     else:
+        event_obj.quota = event_obj.quota - booking.quantity      
         db.session.add(booking)
         db.session.commit()
         print('Successfully Booked!')
         flash('Successfully Booked!', 'event_booking')
         return redirect(url_for('main.thankyou', id=event))
+      #then put a else booking failed try again here 
   else:
     print('Failed to Book')
     flash('Failed to Book!, Try again.', 'event_error')
