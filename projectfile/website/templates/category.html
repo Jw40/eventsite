@@ -64,7 +64,7 @@
             <img src="{{rockEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{rockEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{rockEvent.status[0]}}</h6>
                 <p class="card-text">{{rockEvent.description}}</p>
                 <a href="{{url_for('events.show', id=rockEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -84,7 +84,7 @@
             <img src="{{popEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{popEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{popEvent.status[0]}}</h6>
                 <p class="card-text">{{popEvent.description}}</p>
                 <a href="{{url_for('events.show', id=popEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -104,7 +104,7 @@
             <img src="{{jazzEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{jazzEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{jazzEvent.status[0]}}</h6>
                 <p class="card-text">{{jazzEvent.description}}</p>
                 <a href="{{url_for('events.show', id=jazzEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -125,7 +125,7 @@
             <img src="{{countryEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{countryEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{countryEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{countryEvent.status[0]}}</h6>
                 <p class="card-text">{{countryEvent.description}}</p>
                 <a href="{{url_for('events.show', id=countryEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -146,7 +146,7 @@
             <img src="{{electronicEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{electronicEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{electronicEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{electronicEvent.status[0]}}</h6>
                 <p class="card-text">{{electronicEvent.description}}</p>
                 <a href="{{url_for('events.show', id=electronicEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -166,7 +166,7 @@
             <img src="{{funkEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{funkEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{funkEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{funkEvent.status[0]}}</h6>
                 <p class="card-text">{{funkEvent.description}}</p>
                 <a href="{{url_for('events.show', id=funkEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -186,7 +186,7 @@
             <img src="{{reggaeEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{reggaeEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{reggaeEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{reggaeEvent.status[0]}}</h6>
                 <p class="card-text">{{reggaeEvent.description}}</p>
                 <a href="{{url_for('events.show', id=reggaeEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -206,7 +206,7 @@
             <img src="{{heavyEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{heavyEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{heavyEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{heavyEvent.status[0]}}</h6>
                 <p class="card-text">{{heavyEvent.description}}</p>
                 <a href="{{url_for('events.show', id=heavyEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -226,7 +226,7 @@
             <img src="{{rythemEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{rythemEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{rythemEvent.status}}</h6>
+                <h6 class="card-title text-info">Status: {{rythemEvent.status[0]}}</h6>
                 <p class="card-text">{{rythemEvent.description}}</p>
                 <a href="{{url_for('events.show', id=rythemEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
