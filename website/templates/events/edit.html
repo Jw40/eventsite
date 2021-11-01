@@ -16,7 +16,7 @@
 
   <div class="container-fluid backgroundCustom margin card2">
     <div class="container-fluid margin2 pad ">
-      {% with messages = get_flashed_messages(category_filter=["event"]) %}
+      {% with messages = get_flashed_messages(category_filter=["edit"]) %}
       {% if messages %}
           {% for message in get_flashed_messages() %}
           <div class ="alert alert-warning">

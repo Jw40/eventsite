@@ -51,12 +51,12 @@ def create():
     db.session.add(event_status)
     # commit to the database
     db.session.commit()
-    print('Successfully created new event')
-    flash(message, 'event')
+    print('Successfully Created New Event')
+    flash(message, 'edit')
 
     #Always end with redirect when form is valid
     # return redirect(url_for('events.create'))
-    return redirect('/') 
+    return redirect(url_for('events.my_events')) 
 
   else:
     print('not validate')
@@ -184,7 +184,7 @@ def edit_event(id):
         return render_template('events/edit.html', form=form, event_to_edit=event_to_edit)
 
     elif request.method == 'POST':
-        message = 'Sucessfully Edit Event.'
+        message = 'Successfully edited event.'
         form = EventForm()
         event_to_edit = Event.query.get(id)
 
@@ -214,10 +214,10 @@ def edit_event(id):
         event_to_edit.image = db_file_path
 
         db.session.commit()
-        print('Successfully edit event')
+        print('Successfully Edited Event.')
         flash(message, 'edit')
         # return render_template('events/edit.html', form = form, event_to_edit = event_to_edit)
-        return redirect('/')
+        return redirect(url_for('events.my_events'))
 
 
 
@@ -228,6 +228,7 @@ def delete_event(id):
       try:
         db.session.delete(event_delete)
         db.session.commit()
+        flash('Successfully Deleted Event.', 'edit')
       except Exception as e:
         print(e)
         db.session.rollback()
