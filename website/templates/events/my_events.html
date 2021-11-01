@@ -11,7 +11,7 @@
             <img src="{{record[1].image}}" class="center" alt="Responsive image">
             <br>
             <!--cannot display status-->    
-            <h6 class="card-title text-danger text-center">Status: Booked</h6>
+            <h6 class="card-title text-danger text-center">Status: <b>{{record[1].status[0]}}</b></h6>
             <p class ="text-center">Music Event: <b>{{record[1].name}}</b></p>
             <p class ="text-center">Ticket Qty: {{record[1].quota}}</p>
             <p class ="text-center">Event Date: {{record[1].date}}</p>
