@@ -12,7 +12,7 @@
             {% for record in records %} 
             
             <br>
-            <div class = "card">
+            <div class = "card2">
                 <p class ="text-center">Event ID: <b>{{record[1].id}}</b></p>
                 <img src="{{record[1].image}}" class="center" alt="Responsive image">
                 
@@ -40,15 +40,16 @@
                     
                
             {% endfor %}   
+            {% if records[0]|length == 0 %}
+            <div class = "card center margin">
+                <h6 class="card-title text-danger text-center pad2"><b>No events.</b></h6>
+                <hr>
+                
+            </div>
         </div>
-        {% if records[0]|length == 0 %}
-        <div class = "card center margin">
-            <h6 class="card-title text-danger text-center pad2"><b>No events.</b></h6>
-            <hr>
-            
-        </div>
+        
         <br>
-        {% endif %}
+             {% endif %}
     </div>
 </div>
     <!--back to top button-->
