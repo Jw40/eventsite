@@ -120,6 +120,7 @@ def booking(event):
     elif booking.quantity == event_obj.quota:
         event_obj.quota = event_obj.quota - booking.quantity
         db.session.add(booking)
+        
         #this needs work (updating status in Event_Status column in db)
         #event_status = db.session.query(Event_Status, Event).filter(Event.id == Event_Status.events_id).filter_by(id=event_obj.id)
         event_status = Event_Status.query.filter_by(events_id = event_obj.id).first()
