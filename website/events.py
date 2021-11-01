@@ -167,6 +167,18 @@ def edit_event(id):
     if request.method == 'GET':
         pass
         form = EventForm()
+        form.name.data = event_to_edit.name
+        form.artist.data = event_to_edit.artist
+        form.date.data = event_to_edit.date
+        form.venue.data = event_to_edit.venue
+        form.venue_address.data = event_to_edit.venue_address
+        form.city.data = event_to_edit.city
+        form.state.data = event_to_edit.state
+        form.zipcode.data = event_to_edit.zipcode
+        form.category.data = event_to_edit.category
+        form.description.data = event_to_edit.description
+        form.price.data = event_to_edit.price
+        form.ticket_num.data = event_to_edit.quota
 
         return render_template('events/edit.html', form=form, event_to_edit=event_to_edit)
 
@@ -189,13 +201,11 @@ def edit_event(id):
         event_to_edit.zipcode = request.form.get("zipcode", False)
         event_to_edit.ages = request.form.get("ages", False)
         event_to_edit.category = request.form.get("category", False)
-        #status cannot be changed as SelectField, but category can be changed
-        event_to_edit.event_status = request.form.get("event_status", False)
+        #event_to_edit.event_status = request.form.get("event_status", False)
         event_to_edit.description = request.form.get("description", False)
         event_to_edit.price = request.form.get("price", False)
         event_to_edit.ticket_num = request.form.get("ticket_num", False)
 
-        # add code
         db_file_path = check_upload_file(form)
         print('db_file_path:', db_file_path)
         event_to_edit.image = db_file_path
