@@ -2,33 +2,57 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block content %}
 
-<div class="container-fluid backgroundCustom margin card2">
-    <h2 class = "text-center pad changeFont"><strong>My Events</strong></h2>
+<div class="container-fluid backgroundCustom card2">
+    
 
-    <div class = "row pad">
-        <div class="col-12 col-lg-6 col-md-6 col-sm-6 card center margin4" style="width: 60rem;">              
+    <div class = "row ">
+        <div class="col-12 col-lg-6 col-md-6 col-sm-6 card center margin4" style="width: 60rem;">   
+            <h1 class = "text-center pad changeFont card backgroundCustom2 center"><strong>MyEvents</strong></h1>     
+            <h6 class = "text-center changeFont pad">Events you are hosting.</h6>
             {% for record in records %} 
-            <img src="{{record[1].image}}" class="center" alt="Responsive image">
+            
             <br>
-            <!--cannot display status-->    
-            <h6 class="card-title text-danger text-center">Status: <b>{{record[1].status[0]}}</b></h6>
-            <p class ="text-center">Music Event: <b>{{record[1].name}}</b></p>
-            <p class ="text-center">Ticket Qty: {{record[1].quota}}</p>
-            <p class ="text-center">Event Date: {{record[1].date}}</p>
-            <p class ="text-center">Venue: {{record[1].venue}}</p>
-            <p class ="text-center">Address: {{record[1].venue_address}}</p>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <a href="{{url_for('events.show', id=record[1].id)}}" class="col-md-3 col-md-offest-3 btn btn-primary">View Event Details</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{{url_for('events.delete_event', id=record[1].id)}}" class="col-md-3 btn btn-danger">Delete</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{{url_for('events.edit_event', id=record[1].id)}}" class="col-md-3 btn btn-success">Edit</a>
+            <div class = "card">
+                <p class ="text-center">Event ID: <b>{{record[1].id}}</b></p>
+                <img src="{{record[1].image}}" class="center" alt="Responsive image">
+                
+            
+                <!--cannot display status-->    
+                <h6 class="card-title text-info text-center">Status: <b>{{record[1].status[0]}}</b></h6>
+                <p class ="text-center">Music Event: <b>{{record[1].name}}</b></p>
+                <p class ="text-center">Ticket Qty: {{record[1].quota}}</p>
+                <p class ="text-center">Event Date: {{record[1].date}}</p>
+                <p class ="text-center">Venue: {{record[1].venue}}</p>
+                <p class ="text-center">Address: {{record[1].venue_address}}</p>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <a href="{{url_for('events.show', id=record[1].id)}}" class="col-md-3 col-md-offest-3 btn btn-primary">View Event Details</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{url_for('events.delete_event', id=record[1].id)}}" class="col-md-3 btn btn-danger">Delete</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{{url_for('events.edit_event', id=record[1].id)}}" class="col-md-3 btn btn-success">Edit</a>
+                    </div>
                 </div>
             </div>
-            <br><br><hr>
+            <br><hr><br>
+                
+                
+                    
+               
             {% endfor %}   
         </div>
+        {% if records[0]|length == 0 %}
+        <div class = "card center margin">
+            <h6 class="card-title text-danger text-center pad2"><b>No events.</b></h6>
+            <hr>
+            
+        </div>
+        <br>
+        {% endif %}
     </div>
-
+</div>
+    <!--back to top button-->
+    <div class = "col text-center">
+        <a href="#" class="btn text-center buttonCustom2">Back to top</a>
+    </div>
 {% endblock %}

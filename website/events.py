@@ -180,6 +180,7 @@ def edit_event(id):
         form.price.data = event_to_edit.price
         form.ticket_num.data = event_to_edit.quota
 
+
         return render_template('events/edit.html', form=form, event_to_edit=event_to_edit)
 
     elif request.method == 'POST':
@@ -201,11 +202,13 @@ def edit_event(id):
         event_to_edit.zipcode = request.form.get("zipcode", False)
         event_to_edit.ages = request.form.get("ages", False)
         event_to_edit.category = request.form.get("category", False)
-        #event_to_edit.event_status = request.form.get("event_status", False)
+        #status cannot be changed as SelectField, but category can be changed
+        event_to_edit.event_status = request.form.get("event_status", False)
         event_to_edit.description = request.form.get("description", False)
         event_to_edit.price = request.form.get("price", False)
         event_to_edit.ticket_num = request.form.get("ticket_num", False)
 
+        # add code
         db_file_path = check_upload_file(form)
         print('db_file_path:', db_file_path)
         event_to_edit.image = db_file_path

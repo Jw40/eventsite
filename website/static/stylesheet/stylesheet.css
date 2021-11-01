@@ -13,6 +13,7 @@
     }
 
 }
+
 .card-img-top {
     width: 100%;
     height: 25vw;
@@ -255,4 +256,12 @@ input#commentText {
 
 .changeTextColour{
     color:#f4a460;
+}
+
+.backgroundCustom2{
+    background-color:#F0F8FF;
+}
+
+.backgroundCustom3{
+    background-color:#F5DEB3;
 }
