@@ -72,7 +72,8 @@ class Event(db.Model):
     
     #event_status = db.relationship('Event_Status', backref="events")
     def __repr__(self): #string print method
-        return "<Name: {}>".format(self.name)
+        # return "<Name: {}>".format(self.name)
+        return f"{self.__dict__}"
 
 
 

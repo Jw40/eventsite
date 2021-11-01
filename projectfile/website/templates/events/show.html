@@ -20,7 +20,7 @@
 
   {% with messages = get_flashed_messages(category_filter=["event_error"]) %}
   {% if messages %}
-  <div class="container-fluid margin2 pad"></div>
+  <div class="container-fluid margin2 pad">
       {% for message in get_flashed_messages() %}
       <div class ="alert alert-warning">
           <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
@@ -33,7 +33,7 @@
 
 {% with messages = get_flashed_messages(category_filter=["comment"]) %}
   {% if messages %}
-  <div class="container-fluid margin2 pad"></div>
+  <div class="container-fluid margin2 pad">
       {% for message in get_flashed_messages() %}
       <div class ="alert alert-warning">
           <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
@@ -62,8 +62,8 @@
               <img class="img-fluid card-img-top center  backgroundCustom pad margin" src="{{event.image}}" style="width: 53rem;">  
               <div class="media-body">  
                 <h2 class="mt-0 text-center text-uppercase changeFont2">{{event.name}}</h2>  
-                <h5 class="text-center text-light"><br>Venue:</br> {{event.venue}}</h5>
-                <h5 class="text-center  text-light"><br>Date:</br>{{event.date}}</h5>
+                <h5 class="text-center text-light"><br>Venue:<br /> {{event.venue}}</h5>
+                <h5 class="text-center  text-light"><br>Date(format: 2021-12-12):<br />{{event.date}}</h5>
                 <h5 class="text-center  text-light"><br>Ticket Price (AUD):</br>${{event.price}}</h5>
                 <h5 class="text-center text-light"><br>Age group:</br>{{event.ages}}</h5>
                 <h5 class="text-center text-info "><br>Status:</br>{{event.status}}</h5>  
@@ -164,7 +164,7 @@
     <!-- Comments -->  
     <div class="row">  
       <div class="col-md-2 text-center center">  
-        <h2>Comments</h1>  
+        <h2>Comments</h2>
       </div>  
     </div>  
  

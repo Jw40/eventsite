@@ -3,7 +3,7 @@
 {% block header %}
   {% with messages = get_flashed_messages(category_filter=["event_booking"]) %}
   {% if messages %}
-  <div class="container-fluid margin2 pad"></div>
+  <div class="container-fluid margin2 pad">
       {% for message in get_flashed_messages() %}
       <div class ="alert alert-warning">
           <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>

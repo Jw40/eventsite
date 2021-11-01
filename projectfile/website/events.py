@@ -1,7 +1,7 @@
 #routes to create and view events and view events comments, function to upload image file of event
 
 #from the week 9 tutorial CHANGE code to events related stuff to create event with a image, route to event/comment
-
+import datetime
 
 from flask import Blueprint, render_template, request, redirect, url_for,flash
 from .models import Booking, Event, Comment, Event_Status, User
@@ -53,8 +53,11 @@ def create():
     db.session.commit()
     print('Successfully created new event')
     flash(message, 'event')
+
     #Always end with redirect when form is valid
-    return redirect(url_for('events.create'))
+    # return redirect(url_for('events.create'))
+    return redirect('/') 
+
   else:
     print('not validate')
   return render_template('events/create.html', form=form)
@@ -138,40 +141,53 @@ def booking_history():
 @bp.route('/edit_event/<id>', methods = ['GET', 'POST'])
 @login_required
 def edit_event(id):
-      message = 'Sucessfully Change Event.'
-      form = EventForm()
-      event_to_edit = Event.query.get(id)
-      event_to_edit.name = request.form.get("name", False)
-      event_to_edit.artist = request.form.get("artist", False)
-      # if add event_to_edit.date, edit_event can not work
-      #event_to_edit.date = request.form.get("date", False)
-      event_to_edit.venue = request.form.get("venue", False)
-      event_to_edit.venue_address = request.form.get("venue_address", False)
-      event_to_edit.city = request.form.get("city", False)
-      event_to_edit.state = request.form.get("state", False)
-      event_to_edit.zipcode = request.form.get("zipcode", False)
-      event_to_edit.ages = request.form.get("ages", False)
-      event_to_edit.category = request.form.get("category", False)
-      #status cannot be changed as SelectField, but category can be changed
-      event_to_edit.event_status = request.form.get("event_status", False)
-      event_to_edit.description = request.form.get("description", False)
-      event_to_edit.price = request.form.get("price", False)
-      event_to_edit.ticket_num = request.form.get("ticket_num", False)
-      #image does not work
-      event_to_edit.image = request.form.get("image", False)
 
-      try:
+    event_to_edit = Event.query.get(id)
+
+    if request.method == 'GET':
+        pass
+        form = EventForm()
+
+        return render_template('events/edit.html', form=form, event_to_edit=event_to_edit)
+
+    elif request.method == 'POST':
+        message = 'Sucessfully Edit Event.'
+        form = EventForm()
+        event_to_edit = Event.query.get(id)
+
+        event_to_edit.name = request.form.get("name", False)
+        event_to_edit.artist = request.form.get("artist", False)
+
+        d = request.form.get("date", False)
+        d2 = datetime.datetime.strptime(d, "%Y-%m-%d")
+        event_to_edit.date = d2
+
+        event_to_edit.venue = request.form.get("venue", False)
+        event_to_edit.venue_address = request.form.get("venue_address", False)
+        event_to_edit.city = request.form.get("city", False)
+        event_to_edit.state = request.form.get("state", False)
+        event_to_edit.zipcode = request.form.get("zipcode", False)
+        event_to_edit.ages = request.form.get("ages", False)
+        event_to_edit.category = request.form.get("category", False)
+        #status cannot be changed as SelectField, but category can be changed
+        event_to_edit.event_status = request.form.get("event_status", False)
+        event_to_edit.description = request.form.get("description", False)
+        event_to_edit.price = request.form.get("price", False)
+        event_to_edit.ticket_num = request.form.get("ticket_num", False)
+
+        # add code
+        db_file_path = check_upload_file(form)
+        print('db_file_path:', db_file_path)
+        event_to_edit.image = db_file_path
+
         db.session.commit()
-        print('Successfully change event')
+        print('Successfully edit event')
         flash(message, 'edit')
-        return render_template('events/edit.html',
-        form = form,
-        event_to_edit = event_to_edit)
-      except Exception as e:
-        print(e)
-        db.session.rollback
-      return redirect('events/my_events.html')
-  
+        # return render_template('events/edit.html', form = form, event_to_edit = event_to_edit)
+        return redirect('/')
+
+
+
 #delete
 @bp.route('/delete_event/<id>')
 def delete_event(id):
@@ -181,7 +197,7 @@ def delete_event(id):
         db.session.commit()
       except Exception as e:
         print(e)
-        db.session.rollback
+        db.session.rollback()
       return redirect(url_for('events.my_events'))
 
 #my event

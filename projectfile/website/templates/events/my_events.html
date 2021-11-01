@@ -9,7 +9,7 @@
         <div class="col-12 col-lg-6 col-md-6 col-sm-6 card center margin4" style="width: 60rem;">              
             {% for record in records %} 
             <img src="{{record[1].image}}" class="center" alt="Responsive image">
-            </br>
+            <br>
             <!--cannot display status-->    
             <h6 class="card-title text-danger text-center">Status: Booked</h6>
             <p class ="text-center">Music Event: <b>{{record[1].name}}</b></p>
@@ -26,7 +26,7 @@
                     <a href="{{url_for('events.edit_event', id=record[1].id)}}" class="col-md-3 btn btn-success">Edit</a>
                 </div>
             </div>
-            </br></br><hr>
+            <br><br><hr>
             {% endfor %}   
         </div>
     </div>

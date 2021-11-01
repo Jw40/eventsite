@@ -40,7 +40,7 @@ ALLOWED_FILE = {'PNG','JPG','png','jpg'}
 class EventForm(FlaskForm):
   name = StringField('Event Name', validators=[InputRequired()])
   artist = StringField('Artist(s)', validators=[InputRequired()])
-  date = DateField('Event Date', validators=[InputRequired()])
+  date = DateField('Event Date(format:2020-02-02)', validators=[InputRequired()])
   venue = StringField('Venue Name', validators=[InputRequired()])
   venue_address = StringField('Venue Address', validators=[InputRequired()])
   city = StringField('City', validators=[InputRequired()])
