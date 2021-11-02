@@ -3,7 +3,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-
+import os
 db=SQLAlchemy()
 
 #create a function that creates a web application
@@ -19,7 +19,7 @@ def create_app():
    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
    #set the app configuration data 
-   app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///sitedata.sqlite'
+   app.config['SQLALCHEMY_DATABASE_URI']= os.environ['DATABASE_URL'] # change from 'sqlite:///sitedata.sqlite'
    #initialize db with flask app
    db.init_app(app)
 
