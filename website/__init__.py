@@ -19,7 +19,7 @@ def create_app():
    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
    #set the app configuration data 
-   app.config['SQLALCHEMY_DATABASE_URI']= 'postgres://idyvncwhljgqfc:211d3eb4300cfb00ed4225598ff86bd528e473dcc287aee8871be5fe6dfda008@ec2-52-22-81-147.compute-1.amazonaws.com:5432/dpave7fiham3t'
+   app.config['SQLALCHEMY_DATABASE_URI']= 'postgresql://idyvncwhljgqfc:211d3eb4300cfb00ed4225598ff86bd528e473dcc287aee8871be5fe6dfda008@ec2-52-22-81-147.compute-1.amazonaws.com:5432/dpave7fiham3t'
    #app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
    #initialize db with flask app
    db.init_app(app)
