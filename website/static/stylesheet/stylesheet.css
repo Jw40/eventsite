@@ -131,6 +131,10 @@ button {
     margin: 10px;
 }
 
+.delete-custom {
+    margin: 0px;
+}
+
 /*first button custom margin*/
 a#topButton {
     margin: 10px;

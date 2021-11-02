@@ -39,7 +39,7 @@
                     <div class="row justify-content-center">
                         <a href="{{url_for('events.show', id=record[1].id)}}" class="col-md-3 col-md-offest-3 btn btn-primary">View Event Details</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="{{url_for('events.delete_event', id=record[1].id)}}" class="col-md-3 btn btn-danger">Delete</a>
+                        <button type="button" class="col-md-3 btn delete-custom btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Delete</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="{{url_for('events.edit_event', id=record[1].id)}}" class="col-md-3 btn btn-success">Edit</a>
                     </div>
@@ -48,7 +48,23 @@
             <br><hr><br>
                 
                 
-                    
+            <div class="modal" tabindex="-1" id="confirmModal">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title">Confirm event deletion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <p>Are you sure you want to delete event <strong>{{record[1].name}}</strong>?</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="{{url_for('events.delete_event', id=record[1].id)}}" class="col-md-3 btn btn-danger">Delete</a>
+                    </div>
+                </div>
+                </div>
+            </div>        
                
             {% endfor %}   
             {% if records[0]|length == 0 %}
@@ -67,5 +83,6 @@
     <div class = "col text-center pad">
         <a href="#" class="btn text-center buttonCustom2">Back to top</a>
     </div>
+    
 </div>
 {% endblock %}
