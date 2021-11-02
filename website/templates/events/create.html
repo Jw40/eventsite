@@ -33,7 +33,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="pad card col-lg-8 col-md-6 col-xs-2">
-        <h1 class = "text-center pad changeFont card backgroundCustom2">Add New Event</h1>
+        <h1 class = "text-center pad changeFont card backgroundCustom2 border-secondary">Add New Event</h1>
         <h6 class = "text-center changeFont pad">Enter a Event that you advertise to customers.</h6>
         <div class="row pad">
           <div class="card form1 pad margin4">
@@ -42,6 +42,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <!--back to top button-->
+  <div class = "col text-center pad">
+    <a href="{{ url_for('main.index') }}" class="btn btn-danger text-center pad2">Cancel</a>
   </div>
 </div>
 {% endblock %}

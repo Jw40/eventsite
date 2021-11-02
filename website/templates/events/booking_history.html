@@ -5,13 +5,11 @@
 <div class="container-fluid backgroundCustom  margin4">
     <div class = "row pad ">
       <div class=" card center pad margintop" style="width: 60rem;">
-        <h1 class = "text-center pad changeFont card backgroundCustom2 center"><strong>Booking History</strong></h1>
+        <h1 class = "text-center pad changeFont card backgroundCustom2 center border-secondary"><strong>Booking History</strong></h1>
         {% if records[0]|length >0 %}
         <h6 class = "text-center changeFont pad">Events you have booked.</h6>
         {% endif  %}
-        {% if records[0]|length ==0 %}
-                <h6 class = "text-center changeFont pad">You have no booking record</h6>
-        {% endif  %}
+        
         <hr>
         <div class="col-sm-12 col-md-12 col-lg-12">
         
@@ -43,6 +41,12 @@
                 {% endfor %}
               </tbody>
             </table>
+            {% if records[0]|length ==0 %}
+            <div class = "card  margin">
+              <h6 class="card-title text-danger text-center pad2"><b>You have no bookings record.</b></h6>
+              <hr>
+          </div>
+            {% endif  %}
           </div>
         </div>
       </div>

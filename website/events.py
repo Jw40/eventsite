@@ -231,7 +231,7 @@ def edit_event(id):
 
 
 
-#delete
+#delete is used for deleteing an event from the database
 @bp.route('/delete_event/<id>')
 def delete_event(id):
       event_delete = Event.query.get(id)

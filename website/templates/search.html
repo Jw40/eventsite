@@ -3,14 +3,22 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-
+<style>
+    #searchbar {
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+}
+</style>
     <div class="container-fluid backgroundCustom margin4">
-        <h3>Search Events</h3>
-        <form class="form-inline d-flex flex-nowrap center" id = searchbar action="{{url_for('main.search')}}" >
+        <h3 class = "pad">Search Events</h3>
+        <div class = " ">
+            <form class=" form-inline d-flex flex-nowrap searchbar" id = searchbar action="{{url_for('main.search')}}" >
             
-            <input type="text" name="search" class="pad2 form-control flex-grow-1 my-1 mr-sm-2 a margin3" id="innerSearchBar">
-            <button type="submit" class="flex-shrink-1 btn btn-primary my-1">&#128269</button>
-        </form>
+                <input type="text" name="search" class="pad2 form-control flex-grow-1 my-1 mr-sm-2 a margin3" id="innerSearchBar">
+                <button type="submit" class="flex-shrink-1 btn btn-primary my-1">&#128269</button>
+            </form>
+        </div>
         <h3 class="pad margin1 text-center">Search Results for:
             {% with messages = get_flashed_messages(category_filter=["search_error"]) %}
         {% if messages %}
@@ -28,12 +36,13 @@
             <div class = "pad col-12 col-lg-12 col-md-12 col-sm-12 card center margin4" style="width: 60rem;">
                 {% for event in event %}
                 <div class="card text-center">
+                    <h5 class="card-title pad">{{event.name}}</h5>
                     <img class="img-fluid center pad" src="{{event.image}}" style="width: 53rem;">
                     <div class="card-body">
-                        <h5 class="card-title">{{event.name}}</h5>
-                        <h6 class="card-title text-info">Status: {{event.status[0]}}</h6>
-                        <p class="card-text">Category: {{event.category}}</p>
-                        <p class="card-text event-description">{{event.description}}</p>
+                        <h5 class="card-title pad">Artist:<br> {{event.artist}}</h5>
+                        <h6 class="card-title text-info ">Status: {{event.status[0]}}</h6>
+                        <h6 class="card-text">Category: {{event.category}}</h6>
+                        <p class="card-text event-description">Desciprtion: <br>{{event.description}}</p>
                     </div>
                     <div class="card-footer"><a href = "{{url_for('events.show', id=event.id)}}" class ="btn  backgroundCustom4 "> View Details </a></div>
                 </div>

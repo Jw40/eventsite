@@ -3,50 +3,38 @@
 {% block content %}
 
 <style>
-.card {
-  margin: 0 auto; /* Added */
-  float: none; /* Added */
-  margin-bottom: 10px; /* Added */
-  padding: 20px;}
+  .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        
+}
+.form1 {
 
-.form1{
-  padding: 50px;
-  position: relative;}
+ padding: 50px;
+ position: relative;
+}
 </style>
 
-  <div class="container-fluid backgroundCustom margin card2">
-    <div class="container-fluid margin2 pad ">
-      {% with messages = get_flashed_messages(category_filter=["edit"]) %}
-      {% if messages %}
-          {% for message in get_flashed_messages() %}
-          <div class ="alert alert-warning">
-              <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
-              {{message}}
-          </div>
-          {% endfor %}
-      {% endif %}
-      {% endwith %}
-    </div>
+<div class="container-fluid backgroundCustom margin4 card2 pad">
+  
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="card col-lg-8 col-md-6 col-xs-2">
-          <h1 class = "text-center changeFont card backgroundCustom2">Edit Event</h1>
-          <h6 class = "text-center changeFont">Edit this event:</h6>
-          <div class="row ">
-            <div class="card form1 pad margin4">
-                {{ wtf.quick_form(form, button_map={'submit':'success'}) }}
-            </div>
+  <div class="container-fluid">
+    <div class="row pad">
+      <div class="pad card col-lg-8 col-md-6 col-xs-2">
+        <h1 class = "text-center pad changeFont card backgroundCustom2 border-secondary">Edit Event</h1>
+        <h6 class = "text-center changeFont pad">Edit this event:</h6>
+        <div class="row pad">
+          <div class="card form1 pad margin4">
+              {{ wtf.quick_form(form, button_map={'submit':'success'}) }}
           </div>
         </div>
       </div>
     </div>
-          <!--back to top button-->
-  <div class = "col text-center">
-    <a href="{{ url_for('events.my_events') }}" class="btn btn-danger text-center pad2">Cancel</a>
   </div>
-  </div>
-
-
-
+    <!--back to top button-->
+    <div class = "col text-center pad">
+      <a href="{{ url_for('events.my_events') }}" class="btn btn-danger text-center pad2">Cancel</a>
+    </div>
+</div>
 {% endblock %}

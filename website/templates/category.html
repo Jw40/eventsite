@@ -2,7 +2,7 @@
 
 {% block header %}
 <!--Search by Catergoy text-->
-<h1 class = "text-center pad changeFont margin4 card backgroundCustom2 center">Search All Categories</h1>
+<h1 class = "text-center pad changeFont margin4 card backgroundCustom2 center border-secondary">Search All Categories</h1>
 <br>
 <hr>
 <br>
@@ -10,7 +10,7 @@
 <ul class="margin nav justify-content-center">
     {% if rockEvent is defined and rockEvent|length > 0 %}
     <li class="nav-item bg-dark rounded-3 nav2li">
-      <a class="nav-link active" href="#rock" id = 'CatBar'>Rock</a>
+      <a class="nav-link active " href="#rock" id = 'CatBar'>Rock</a>
     </li>
     {% endif %}
     {% if popEvent is defined and popEvent|length > 0 %}
@@ -60,7 +60,7 @@
 
     <!--Row 1 ROCK category-->
     {% if rockEvent is defined and rockEvent|length > 0 %}
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="rock"><b>Rock Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="rock"><b>Rock Music Events</b></h2>
     <div class="row">
         {% for rockEvent in rockEvent  %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -80,7 +80,7 @@
     {% if popEvent is defined and popEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="pop"><b>Pop Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="pop"><b>Pop Music Events</b></h2>
     <div class="row">
         {% for popEvent in popEvent  %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -100,7 +100,7 @@
     {% if jazzEvent is defined and jazzEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="jazz"><b>Jazz Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="jazz"><b>Jazz Music Events</b></h2>
     <div class="row">
         {% for jazzEvent in jazzEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -121,7 +121,7 @@
     {% if countryEvent is defined and countryEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="country"><b>Country Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="country"><b>Country Music Events</b></h2>
     <div class="row">
         {% for countryEvent in countryEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -142,7 +142,7 @@
     {% if electronicEvent is defined and electronicEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="Electronic"><b>Electronic Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="Electronic"><b>Electronic Music Events</b></h2>
     <div class="row">
         {% for electronicEvent in electronicEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -162,7 +162,7 @@
     {% if funkEvent is defined and funkEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="funk"><b>Funk Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="funk"><b>Funk Music Events</b></h2>
     <div class="row">
         {% for funkEvent in funkEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -182,7 +182,7 @@
     {% if reggaeEvent is defined and reggaeEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="reggae"><b>Reggae Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="reggae"><b>Reggae Music Events</b></h2>
     <div class="row">
         {% for reggaeEvent in reggaeEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -202,7 +202,7 @@
     {% if heavyEvent is defined and heavyEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class = "text-center margin4 card backgroundCustom3 center" id="hm"><b>Heavy Metal Music Events</b></h2>
+    <h2 class = "text-center margin4 card backgroundCustom3 center border-secondary" id="hm"><b>Heavy Metal Music Events</b></h2>
     <div class="row">
         {% for heavyEvent in heavyEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -222,7 +222,7 @@
     {% if rythemEvent is defined and rythemEvent|length > 0 %}
     <!--dividing line-->
     <hr>
-    <h2 class ="text-center margin4 card backgroundCustom3 center" id="rnb"><b>Rhythm and Blues Music Events</b></h2>
+    <h2 class ="text-center margin4 card backgroundCustom3 center border-secondary" id="rnb"><b>Rhythm and Blues Music Events</b></h2>
     <div class="row">
         {% for rythemEvent in rythemEvent %}
         <div class="img-flex col-12 col-lg-4 col-md-4 col-sm-4 card center margin4" style="width: 30rem;">
@@ -243,7 +243,7 @@
 
     <!--back to top button-->
     <div class = "col text-center">
-        <a href="#" class="btn text-center buttonCustom2">Back to top</a>
+        <a href="#" class="btn text-center buttonCustom2 border-secondary">Back to top</a>
     </div>
 
 <!--end container-->

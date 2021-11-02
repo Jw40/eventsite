@@ -33,7 +33,7 @@
 
 {% with messages = get_flashed_messages(category_filter=["comment"]) %}
   {% if messages %}
-  <div class="container-fluid margin2 pad">
+  <div class="container-fluid pad2">
       {% for message in get_flashed_messages() %}
       <div class ="alert alert-warning">
           <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
@@ -48,7 +48,7 @@
     <div class="row mt-1 mb-3">  
         <div class="col-md-12">  
             <div class="float-left">  
-                 <h1 class="mb-0 card backgroundCustom2">Music Event: <b class = "changeTextColour justify-content-center">{{event.name}}</b></h1>  
+                 <h1 class="mb-0 card backgroundCustom2 border-secondary">Music Event: <b class = "changeTextColour justify-content-center">{{event.name}}</b></h1>  
             </div>  
         </div>  
     </div>  

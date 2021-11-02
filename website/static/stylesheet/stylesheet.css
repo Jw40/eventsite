@@ -2,7 +2,7 @@
 
     .event-description{
         overflow:hidden;
-        max-height: 400px;
+        max-height: 500px;
         
         -webkit-box-orient: vertical;
         display: block;
@@ -286,5 +286,5 @@ input#commentText {
 }
 
 .Custom1{
-    color: #CD5C5C;
+    color: #DC143C;
 }
