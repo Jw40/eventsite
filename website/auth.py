@@ -10,7 +10,7 @@ from . import db
 #create a blueprint
 bp = Blueprint('auth', __name__)
 
-# this is the hint for a login function
+#login
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
@@ -40,7 +40,7 @@ def login():
 
 
 
-
+#register
 @bp.route('/register', methods=['GET','POST'])
 def register():
     register = RegisterForm()
@@ -70,7 +70,7 @@ def register():
     else:    
         return render_template('user.html', form=register, heading='Register')
 
-
+#logout
 @bp.route("/logout", methods=['GET','POST'])
 @login_required
 def logout():

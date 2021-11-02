@@ -67,7 +67,17 @@
             <img src="{{rockEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{rockEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{rockEvent.status[0]}}</h6>
+                {% for rockEvent in rockEvent.status %}
+                {% if rockEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{rockEvent.status}}</h6>
+                {% elif rockEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{rockEvent.status}}</h6>
+                {% elif rockEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{rockEvent.status}}</h6>
+                {% elif rockEvent.status == "Inactive" %}
+                <h6 class="card-title text-secondary">Status: {{rockEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{rockEvent.description}}</p>
                 <a href="{{url_for('events.show', id=rockEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -87,7 +97,17 @@
             <img src="{{popEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{popEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{popEvent.status[0]}}</h6>
+                {% for popEvent in popEvent.status %}
+                {% if popEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{popEvent.status}}</h6>
+                {% elif popEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{popEvent.status}}</h6>
+                {% elif popEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{popEvent.status}}</h6>
+                {% elif popEvent.status == "Inactive" %}
+                <h6 class="card-title text-secondary">Status: {{popEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{popEvent.description}}</p>
                 <a href="{{url_for('events.show', id=popEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -107,7 +127,17 @@
             <img src="{{jazzEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{jazzEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{jazzEvent.status[0]}}</h6>
+                {% for jazzEvent in jazzEvent.status %}
+                {% if jazzEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{jazzEvent.status}}</h6>
+                {% elif jazzEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{jazzEvent.status}}</h6>
+                {% elif jazzEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{jazzEvent.status}}</h6>
+                {% elif jazzEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{jazzEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{jazzEvent.description}}</p>
                 <a href="{{url_for('events.show', id=jazzEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -128,7 +158,17 @@
             <img src="{{countryEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{countryEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{countryEvent.status[0]}}</h6>
+                {% for countryEvent in countryEvent.status %}
+                {% if countryEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{countryEvent.status}}</h6>
+                {% elif countryEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{countryEvent.status}}</h6>
+                {% elif countryEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{countryEvent.status}}</h6>
+                {% elif countryEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{countryEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{countryEvent.description}}</p>
                 <a href="{{url_for('events.show', id=countryEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -149,7 +189,17 @@
             <img src="{{electronicEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{electronicEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{electronicEvent.status[0]}}</h6>
+                {% for electronicEvent in electronicEvent.status %}
+                {% if electronicEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{electronicEvent.status}}</h6>
+                {% elif electronicEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{electronicEvent.status}}</h6>
+                {% elif electronicEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{electronicEvent.status}}</h6>
+                {% elif electronicEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{electronicEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{electronicEvent.description}}</p>
                 <a href="{{url_for('events.show', id=electronicEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -169,7 +219,17 @@
             <img src="{{funkEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{funkEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{funkEvent.status[0]}}</h6>
+                {% for funkEvent in funkEvent.status %}
+                {% if funkEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{funkEvent.status}}</h6>
+                {% elif funkEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{funkEvent.status}}</h6>
+                {% elif funkEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{funkEvent.status}}</h6>
+                {% elif funkEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{funkEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{funkEvent.description}}</p>
                 <a href="{{url_for('events.show', id=funkEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -189,7 +249,17 @@
             <img src="{{reggaeEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{reggaeEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{reggaeEvent.status[0]}}</h6>
+                {% for reggaeEvent in reggaeEvent.status %}
+                {% if reggaeEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{reggaeEvent.status}}</h6>
+                {% elif reggaeEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{reggaeEvent.status}}</h6>
+                {% elif reggaeEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{reggaeEvent.status}}</h6>
+                {% elif reggaeEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{reggaeEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{reggaeEvent.description}}</p>
                 <a href="{{url_for('events.show', id=reggaeEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -209,7 +279,17 @@
             <img src="{{heavyEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{heavyEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{heavyEvent.status[0]}}</h6>
+                {% for heavyEvent in heavyEvent.status %}
+                {% if heavyEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{heavyEvent.status}}</h6>
+                {% elif heavyEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{heavyEvent.status}}</h6>
+                {% elif heavyEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{heavyEvent.status}}</h6>
+                {% elif heavyEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{heavyEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{heavyEvent.description}}</p>
                 <a href="{{url_for('events.show', id=heavyEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>
@@ -229,7 +309,17 @@
             <img src="{{rythemEvent.image}}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h4 class="card-title">{{rythemEvent.name}}</h4>
-                <h6 class="card-title text-info">Status: {{rythemEvent.status[0]}}</h6>
+                {% for rythemEvent in rythemEvent.status %}
+                {% if rythemEvent.status == "Upcoming" %}
+                <h6 class="card-title text-info">Status: {{rythemEvent.status}}</h6>
+                {% elif rythemEvent.status == "Booked" %}
+                <h6 class="card-title text-danger">Status: {{rythemEvent.status}}</h6>
+                {% elif rythemEvent.status == "Canceled" %}
+                <h6 class="card-title text-warning">Status: {{rythemEvent.status}}</h6>
+                {% elif rythemEvent.status == "Inactive" %}
+                <h6 class="card-title Custom2">Status: {{rythemEvent.status}}</h6>
+                {% endif %}
+                {% endfor %}
                 <p class="card-text">{{rythemEvent.description}}</p>
                 <a href="{{url_for('events.show', id=rythemEvent.id)}}" class="btn btn-primary">Find Tickets</a>
             </div>

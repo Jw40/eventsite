@@ -9,8 +9,6 @@
         margin-bottom: 10px; /* Added */
         
 }
-
-
 </style>
 
 <div class="container-fluid backgroundCustom margin4 card2 pad">
@@ -21,6 +19,7 @@
         <h6 class = "text-center changeFont pad">Edit this event:</h6>
         <div class="row pad">
           <div class="card form1 pad margin4">
+            <!--edit form -->
               {{ wtf.quick_form(form, button_map={'submit':'success'}) }}
           </div>
         </div>

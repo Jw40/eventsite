@@ -28,8 +28,20 @@
             <br>
             <div class = "card">
                 <p class ="text-center">Event ID: <b>{{record[1].id}}</b></p>
-                <img src="{{record[1].image}}" class="center" alt="Responsive image"> 
-                <h6 class="card-title text-info text-center">Status: <b>{{record[1].status[0]}}</b></h6>
+                <img src="{{record[1].image}}" class="center" alt="Responsive image">
+
+                <!--this is not working-->
+                {% if record[1].status[0] == "Upcoming" %}
+                <h5 class="text-center text-info "><br>Status:</br>{{record[1].status[0]}}</h5>
+                {% elif record[1].status[0] == "Booked" %}
+                <h5 class="text-center text-danger "><br>Status:</br>{{record[1].status[0]}}</h5>
+                {% elif record[1].status[0] == "Canceled" %}
+                <h5 class="text-center text-warning "><br>Status:</br>{{record[1].status[0]}}</h5>
+                {% elif record[1].status[0] == "Inactive" %}
+                <h5 class="text-center Custom2 "><br>Status:</br>{{record[1].status[0]}}</h5>
+                {% endif %}
+                <!--displays status in dark text-->
+                <h6 class="card-title Custom2 text-center pad">Status: <b>{{record[1].status[0]}}</b></h6>
                 <p class ="text-center">Music Event: <b>{{record[1].name}}</b></p>
                 <p class ="text-center">Ticket Qty: {{record[1].quota}}</p>
                 <p class ="text-center">Event Date: {{record[1].date}}</p>

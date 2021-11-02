@@ -38,13 +38,23 @@
             <div class = "pad col-12 col-lg-12 col-md-12 col-sm-12 card center margin4" style="width: 60rem;">
                 {% for event in event %}
                 <div class="card text-center">
-                    <h5 class="card-title pad">{{event.name}}</h5>
+                    <h5 class="card-title pad"><b>{{event.name}}</b></h5>
                     <img class="img-fluid center pad" src="{{event.image}}" style="width: 53rem;">
                     <div class="card-body">
-                        <h5 class="card-title pad">Artist:<br> {{event.artist}}</h5>
-                        <h6 class="card-title text-info ">Status: {{event.status[0]}}</h6>
-                        <h6 class="card-text">Category: {{event.category}}</h6>
-                        <p class="card-text event-description">Desciprtion: <br>{{event.description}}</p>
+                        <h5 class="card-title ">Artist:<br> {{event.artist}}</h5>
+                        {% for event in event.status %}
+                        {% if event.status == "Upcoming" %}
+                        <h5 class="text-center text-info "><br>Status:</br>{{event.status}}</h5>
+                        {% elif event.status == "Booked" %}
+                        <h5 class="text-center text-danger "><br>Status:</br>{{event.status}}</h5>
+                        {% elif event.status == "Canceled" %}
+                        <h5 class="text-center text-warning "><br>Status:</br>{{event.status}}</h5>
+                        {% elif event.status == "Inactive" %}
+                        <h5 class="text-center Custom2 "><br>Status:</br>{{event.status}}</h5>
+                        {% endif %}
+                        {% endfor %}
+                        <h5 class="card-text pad">Category: {{event.category}}</h5>
+                        <p class="card-text event-description">Description: <br>{{event.description}}</p>
                     </div>
                     <div class="card-footer"><a href = "{{url_for('events.show', id=event.id)}}" class ="btn  backgroundCustom4 "> View Details </a></div>
                 </div>
