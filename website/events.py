@@ -175,10 +175,14 @@ def edit_event(id):
         form.city.data = event_to_edit.city
         form.state.data = event_to_edit.state
         form.zipcode.data = event_to_edit.zipcode
+        form.ages.data = event_to_edit.ages
         form.category.data = event_to_edit.category
+        form.event_status.data = event_to_edit.status[0]
         form.description.data = event_to_edit.description
         form.price.data = event_to_edit.price
         form.ticket_num.data = event_to_edit.quota
+        
+        #form.image.data = event_to_edit.image
 
 
         return render_template('events/edit.html', form=form, event_to_edit=event_to_edit)
@@ -202,8 +206,14 @@ def edit_event(id):
         event_to_edit.zipcode = request.form.get("zipcode", False)
         event_to_edit.ages = request.form.get("ages", False)
         event_to_edit.category = request.form.get("category", False)
+
+        event_status = Event_Status.query.filter_by(events_id=id).first()
+        if event_status:
+            event_status.status = request.form.get("event_status", False)
+            db.session.commit()
+
         #status cannot be changed as SelectField, but category can be changed
-        event_to_edit.event_status = request.form.get("event_status", False)
+        #event_to_edit.event_status = request.form.get("event_status", False)
         event_to_edit.description = request.form.get("description", False)
         event_to_edit.price = request.form.get("price", False)
         event_to_edit.ticket_num = request.form.get("ticket_num", False)
