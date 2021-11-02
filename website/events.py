@@ -216,7 +216,7 @@ def edit_event(id):
         #event_to_edit.event_status = request.form.get("event_status", False)
         event_to_edit.description = request.form.get("description", False)
         event_to_edit.price = request.form.get("price", False)
-        event_to_edit.ticket_num = request.form.get("ticket_num", False)
+        event_to_edit.quota = request.form.get("ticket_num", False)
 
         # add code
         db_file_path = check_upload_file(form)
