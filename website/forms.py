@@ -1,9 +1,9 @@
 #differnt type of forms using Wtfforms, login, register, eventform, comment form
 
 from flask_wtf import FlaskForm
-from wtforms.fields import DateField, TextAreaField,SubmitField, StringField, PasswordField, IntegerField
+from wtforms.fields import DateField, TextAreaField,SubmitField, StringField, PasswordField, IntegerField, DateTimeField
 from wtforms.fields.core import SelectField
-from wtforms.validators import InputRequired, Length, Email, EqualTo
+from wtforms.validators import InputRequired, Length, Email, EqualTo, ValidationError
 from flask_wtf.file import FileRequired, FileField, FileAllowed
 
 Categories_List = ('Rock', 'Pop', 'Jazz', 'Country','Electronic', 'Funk', 'Reggae', 'Heavy Metal', 'Rhythm and Blues')
@@ -40,7 +40,7 @@ ALLOWED_FILE = {'PNG','JPG','png','jpg', 'jfif'}
 class EventForm(FlaskForm):
   name = StringField('Event Name', validators=[InputRequired()])
   artist = StringField('Artist(s)', validators=[InputRequired()])
-  date = DateField('Event Date (format: YYYY-MM-DD)', format='%Y-%m-%d', validators=[InputRequired()])
+  date = DateTimeField('Event Date & Starting Time (format: YYYY-MM-DD HH:MM:SS)', format='%Y-%m-%d %H:%M:%S', validators=[InputRequired()])
   venue = StringField('Venue Name', validators=[InputRequired()])
   venue_address = StringField('Venue Address', validators=[InputRequired()])
   city = StringField('City', validators=[InputRequired()])

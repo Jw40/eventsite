@@ -196,7 +196,7 @@ def edit_event(id):
         event_to_edit.artist = request.form.get("artist", False)
 
         d = request.form.get("date", False)
-        d2 = datetime.datetime.strptime(d, "%Y-%m-%d")
+        d2 = datetime.datetime.strptime(d, "%Y-%m-%d %H:%M:%S")
         event_to_edit.date = d2
 
         event_to_edit.venue = request.form.get("venue", False)
