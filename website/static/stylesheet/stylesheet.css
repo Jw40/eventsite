@@ -288,6 +288,9 @@ input#commentText {
 .Custom1{
     color: #DC143C;
 }
+.Custom2{
+    color: #2F4F4F;
+}
 
 .nounderline {
     text-decoration: none !important
