@@ -3,8 +3,19 @@
 {% block content %}
 
 <div class="container-fluid backgroundCustom card2">
+    <div class="container-fluid margin2 pad ">
+        {% with messages = get_flashed_messages(category_filter=["edit"]) %}
+        {% if messages %}
+            {% for message in get_flashed_messages() %}
+            <div class ="alert alert-warning">
+                <button type="button" class="close btn-success" data-dismiss="alert" aria-label="close">x</button>
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
     
-
     <div class = "row ">
         <div class="col-12 col-lg-6 col-md-6 col-sm-6 card center margin4" style="width: 60rem;">   
             <h1 class = "text-center pad changeFont card backgroundCustom2 center"><strong>MyEvents</strong></h1>     
@@ -40,19 +51,21 @@
                     
                
             {% endfor %}   
+            {% if records[0]|length == 0 %}
+            <div class = "card center margin">
+                <h6 class="card-title text-danger text-center pad2"><b>No events.</b></h6>
+                <hr>
+                
+            </div>
         </div>
-        {% if records[0]|length == 0 %}
-        <div class = "card center margin">
-            <h6 class="card-title text-danger text-center pad2"><b>No events.</b></h6>
-            <hr>
-            
-        </div>
+        
         <br>
-        {% endif %}
+             {% endif %}
     </div>
-</div>
+    </div>
     <!--back to top button-->
-    <div class = "col text-center">
+    <div class = "col text-center pad">
         <a href="#" class="btn text-center buttonCustom2">Back to top</a>
     </div>
+</div>
 {% endblock %}

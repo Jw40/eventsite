@@ -2,16 +2,27 @@
 
     .event-description{
         overflow:hidden;
-        max-height: 300px;
+        max-height: 400px;
+        
         -webkit-box-orient: vertical;
         display: block;
         display: -webkit-box;
         overflow: hidden !important;
         text-overflow: ellipsis;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 20;
         margin-bottom: 2rem;
     }
 
+}
+.event-description1{
+    overflow:hidden;
+    max-height: 300px;
+    max-width: 500px;
+    -webkit-box-orient: vertical;
+    display: block;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    margin-bottom: 2rem;
 }
 
 .card-img-top {
@@ -264,4 +275,8 @@ input#commentText {
 
 .backgroundCustom3{
     background-color:#F5DEB3;
+}
+
+.backgroundCustom4{
+    background-color:#CD5C5C;
 }

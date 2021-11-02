@@ -6,9 +6,15 @@
     <div class = "row pad ">
       <div class=" card center pad margintop" style="width: 60rem;">
         <h1 class = "text-center pad changeFont card backgroundCustom2 center"><strong>Booking History</strong></h1>
+        {% if records[0]|length >0 %}
         <h6 class = "text-center changeFont pad">Events you have booked.</h6>
+        {% endif  %}
+        {% if records[0]|length ==0 %}
+                <h6 class = "text-center changeFont pad">You have no booking record</h6>
+        {% endif  %}
         <hr>
         <div class="col-sm-12 col-md-12 col-lg-12">
+        
           <div class="table-responsive-xl">
             <table class="table">
               <thead>
@@ -22,6 +28,7 @@
                 </tr>
               </thead>
               <tbody>
+                
                 {% for record in records %} 
                   <tr>
                    

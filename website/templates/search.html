@@ -5,20 +5,27 @@
 {% block content %}
 
     <div class="container-fluid backgroundCustom margin4">
-        
-        <h3 class="pad margin1">Search Results for:
+        <h3>Search Events</h3>
+        <form class="form-inline d-flex flex-nowrap center" id = searchbar action="{{url_for('main.search')}}" >
+            
+            <input type="text" name="search" class="pad2 form-control flex-grow-1 my-1 mr-sm-2 a margin3" id="innerSearchBar">
+            <button type="submit" class="flex-shrink-1 btn btn-primary my-1">&#128269</button>
+        </form>
+        <h3 class="pad margin1 text-center">Search Results for:
             {% with messages = get_flashed_messages(category_filter=["search_error"]) %}
         {% if messages %}
             {% for message in get_flashed_messages() %}
-               <b class = "changeTextColour">{{message}}</b>
+               <b class = "changeTextColour"><br>"{{message}}"</b>
             {% endfor %}
         {% endif %}
         {% endwith %}
         </h3>
+        
+        <br>
         <hr>
         <br>
         <div class="row">
-            <div class = "col-12 col-md-12 col-sm-12 img-fluid">
+            <div class = "pad col-12 col-lg-6 col-md-6 col-sm-6 card center margin4" style="width: 60rem;">
                 {% for event in event %}
                 <div class="card text-center">
                     <img class="img-fluid center pad" src="{{event.image}}" style="width: 53rem;">
@@ -26,14 +33,23 @@
                         <h5 class="card-title">{{event.name}}</h5>
                         <h6 class="card-title text-info">{{event.status[0]}}</h6>
                         <p class="card-text">Category: {{event.category}}</p>
-                        <p class="card-text event-description1">{{event.description}}</p>
+                        <p class="card-text event-description">{{event.description}}</p>
                     </div>
-                    <div class="card-footer"><a href = "{{url_for('events.show', id=event.id)}}" class ="btn btn-danger"> View Details </a></div>
+                    <div class="card-footer"><a href = "{{url_for('events.show', id=event.id)}}" class ="btn  backgroundCustom4 "> View Details </a></div>
                 </div>
+                <br>
                 <br>
                 <hr>
                 <br>
+                <br>
                 {% endfor %}
+                {% if event|length == 0 %}
+                <div class = "card center margin">
+                    <h6 class="card-title text-danger text-center pad2"><b>No events Found.</b></h6>
+                    <hr>
+                    
+                </div>
+                {% endif %}
                 
             </div>
         </div>
