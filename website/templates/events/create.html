@@ -4,20 +4,15 @@
 
 <style>
   .card {
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 10px; /* Added */
-        
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
 }
-.form1 {
-
- padding: 50px;
- position: relative;
-}
-
 </style>
+
 <div class="container-fluid backgroundCustom margin card2">
   <div class="container-fluid margin2 pad ">
+    <!--get flash messages-->
     {% with messages = get_flashed_messages(category_filter=["event"]) %}
     {% if messages %}
         {% for message in get_flashed_messages() %}
@@ -30,6 +25,7 @@
     {% endwith %}
   </div>
 
+  <!--create form-->
   <div class="container-fluid">
     <div class="row">
       <div class="pad card col-lg-8 col-md-6 col-xs-2">
@@ -43,9 +39,9 @@
       </div>
     </div>
   </div>
-  <!--back to top button-->
+  <!--cancel button-->
   <div class = "col text-center pad">
-    <a href="{{ url_for('main.index') }}" class="btn btn-danger text-center pad2">Cancel</a>
+    <a href="{{ url_for('main.index') }}" class="btn-lg btn-danger text-center nounderline">Cancel</a>
   </div>
 </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
+<!-- get flashed messages-->
   {% with messages = get_flashed_messages(category_filter=["event_booking"]) %}
   {% if messages %}
   <div class="container-fluid margin2 pad">
@@ -14,7 +15,7 @@
   {% endwith %}
   </div>
     
-    <!-- Help details -->
+    <!-- Thank you details -->
     <div class="jumbotron text-center">
         <h1 class="display-3">Thank You!</h1>
         <p class="lead"><strong>Please check your email</strong> for further instructions on how to receive your tickets.</p>

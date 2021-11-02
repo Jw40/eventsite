@@ -9,20 +9,15 @@
         margin-bottom: 10px; /* Added */
         
 }
-.form1 {
 
- padding: 50px;
- position: relative;
-}
+
 </style>
 
 <div class="container-fluid backgroundCustom margin4 card2 pad">
-  
-
   <div class="container-fluid">
     <div class="row pad">
       <div class="pad card col-lg-8 col-md-6 col-xs-2">
-        <h1 class = "text-center pad changeFont card backgroundCustom2 border-secondary">Edit Event</h1>
+        <h1 class = "text-center pad changeFont card backgroundCustom2 border-dark">Edit Event</h1>
         <h6 class = "text-center changeFont pad">Edit this event:</h6>
         <div class="row pad">
           <div class="card form1 pad margin4">
@@ -32,9 +27,9 @@
       </div>
     </div>
   </div>
-    <!--back to top button-->
+    <!--Cancel button-->
     <div class = "col text-center pad">
-      <a href="{{ url_for('events.my_events') }}" class="btn btn-danger text-center pad2">Cancel</a>
+      <a href="{{ url_for('events.my_events') }}" class="btn-lg btn-danger text-center nounderline">Cancel</a>
     </div>
 </div>
 {% endblock %}

@@ -3,8 +3,8 @@
 {% block content %}
 
 <div class="container-fluid backgroundCustom card2">
-    
     <div class="container-fluid pad2">
+        <!--get flashed messages-->
         {% with messages = get_flashed_messages(category_filter=["edit"]) %}
         {% if messages %}
             {% for message in get_flashed_messages() %}
@@ -22,15 +22,13 @@
             <h1 class = "text-center pad changeFont card backgroundCustom2 center border-secondary"><strong>MyEvents</strong></h1>     
             <h6 class = "text-center changeFont pad">Events you are hosting.</h6>
             <hr>
+
+            <!--my event details-->
             {% for record in records %} 
-            
             <br>
             <div class = "card">
                 <p class ="text-center">Event ID: <b>{{record[1].id}}</b></p>
-                <img src="{{record[1].image}}" class="center" alt="Responsive image">
-                
-            
-                <!--cannot display status-->    
+                <img src="{{record[1].image}}" class="center" alt="Responsive image"> 
                 <h6 class="card-title text-info text-center">Status: <b>{{record[1].status[0]}}</b></h6>
                 <p class ="text-center">Music Event: <b>{{record[1].name}}</b></p>
                 <p class ="text-center">Ticket Qty: {{record[1].quota}}</p>
@@ -67,24 +65,21 @@
                 </div>
                 </div>
             </div>        
-               
+            <!--display no events if len == 0-->
             {% endfor %}   
             {% if records[0]|length == 0 %}
             <div class = "card  margin">
                 <h6 class="card-title text-danger text-center pad2"><b>No events.</b></h6>
                 <hr>
-                
             </div>
         </div>
-        
         <br>
-             {% endif %}
+            {% endif %}
     </div>
     </div>
     <!--back to top button-->
     <div class = "col text-center pad">
-        <a href="#" class="btn text-center buttonCustom2">Back to top</a>
+        <a href="#" class="btn text-center buttonCustom2 border-secondary">Back to top</a>
     </div>
-    
 </div>
 {% endblock %}

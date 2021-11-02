@@ -19,6 +19,7 @@
                 <button type="submit" class="flex-shrink-1 btn btn-primary my-1">&#128269</button>
             </form>
         </div>
+        <!--get flashed messages-->
         <h3 class="pad margin1 text-center">Search Results for:
             {% with messages = get_flashed_messages(category_filter=["search_error"]) %}
         {% if messages %}
@@ -32,6 +33,7 @@
         <br>
         <hr>
         <br>
+        <!--display search-->
         <div class="row">
             <div class = "pad col-12 col-lg-12 col-md-12 col-sm-12 card center margin4" style="width: 60rem;">
                 {% for event in event %}
@@ -56,10 +58,8 @@
                 <div class = "card center margin">
                     <h6 class="card-title text-danger text-center pad2"><b>No events Found.</b></h6>
                     <hr>
-                    
                 </div>
                 {% endif %}
-                
             </div>
         </div>
     </div>
@@ -67,5 +67,4 @@
      <div class = "col text-center">
         <a href="#" class="btn text-center buttonCustom2">Back to top</a>
     </div>
-
 {% endblock %}

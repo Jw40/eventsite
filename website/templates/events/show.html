@@ -16,8 +16,7 @@
     object-fit: cover;
 }
 </style>
-
-
+  <!--get flashed messages-->
   {% with messages = get_flashed_messages(category_filter=["event_error"]) %}
   {% if messages %}
   <div class="container-fluid margin2 pad">
@@ -127,7 +126,6 @@
                   <div class="pad">
                     {{wtf.quick_form(bform,"/events/{0}/booking".format(event.id), button_map={'submit':'success'})}}  
                   </div>
-                  <!-- <p class="text-center card margintop">Total (AUD): <strong>need to figure out</strong></p>-->
                 </div>
               </div>
               <div class="modal-footer">
@@ -136,10 +134,6 @@
             </div>
           </div>
         </div>
-  
- 
-   
- 
     <hr>  
     <!-- Comments -->  
     <div class="row">  
@@ -147,7 +141,6 @@
         <h2>Comments</h2>
       </div>  
     </div>  
- 
     <div class="row col-lg-8 col-md-6 col-sm-12 border-bottom card2"> 
       {{wtf.quick_form(cform,"/events/{0}/comment".format(event.id), button_map={'submit':'success'})}} 
       {% for comment in event.comments %}
@@ -159,9 +152,5 @@
       <br>
       
     </div>  
-  </div> 
-
-
-
-
+</div> 
 {% endblock %}

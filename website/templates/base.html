@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>  
-
     <head>
-      
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +14,9 @@
         <title>MusicEvents</title>
        
     </head>
-
     <body>
         <header>
             <!--NavBar-->
-            
             <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
                 <div class="container-fluid">
                     <a class="navbar-brand changeFont" href="/">MusicEvents</a>
@@ -64,24 +60,15 @@
                             <a class="nav-item nav-link text-light margin3" href="{{ url_for('auth.register') }}">Register</a>
                             <a class="nav-item nav-link btn-primary text-light rounded" href="{{ url_for('auth.login') }}"><b>Log In</b></a>
                             {% endif %}
-                            
-                        
                         </form>
-                        
                     </div>
                 </div>
             </nav>
-
-        
-
             {% block header %}
             {% endblock %}
         </header>
-
             {% block content %}
             {% endblock %}
-
-
         <!-- Optional JavaScript; choose one of the two! -->
 
         <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -101,5 +88,4 @@
         eget odio vel volutpat. Integer viverra iaculis justo, eu imperdiet justo scelerisque quis. Curabitur sodales nibh in ante tristique, vitae efficitur odio mollis.
        <h6 class = "text-center lead">Copyright - MusicEvents 2021.</h6>
     </footer>
-       
 </html>
