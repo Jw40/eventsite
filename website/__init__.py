@@ -19,7 +19,8 @@ def create_app():
    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
    #set the app configuration data 
-   app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
+   app.config['SQLALCHEMY_DATABASE_URI']= 'postgres://postgresql-aerodynamic-00636'
+   #app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
    #initialize db with flask app
    db.init_app(app)
 
