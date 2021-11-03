@@ -68,7 +68,7 @@ class Event(db.Model):
     comments = db.relationship('Comment', backref='events')
     booking = db.relationship('Booking', backref='events')
     # one to one relationship with event status
-    status = db.relationship('Event_Status', backref='events')
+    status = db.relationship('Event_Status', backref ='events')
     
     #event_status = db.relationship('Event_Status', backref="events")
     def __repr__(self): #string print method
@@ -80,8 +80,7 @@ class Event(db.Model):
 #event_status class
 class Event_Status(db.Model):
     __tablename__ = 'event_status'
-    id = db.Column(db.Integer,primary_key=True)
-    events_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    events_id = db.Column(db.Integer, db.ForeignKey('events.id'), primary_key=True )
     status = db.Column(db.String(10))
     def __repr__(self):
         #str1 = str(self.status)[+1:-1]
