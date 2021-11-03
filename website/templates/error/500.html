@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-3"><strong>500 ERROR :(</strong></h1>
+    <h4><strong>INTERNAL SERVER ERROR</strong></h4>
+    <p class="lead">
+      <a class="btn btn-primary btn-sm" href="{{url_for('main.index')}}" role="button">Click to homepage</a>
+    </p>
+</div>
+{% endblock %}

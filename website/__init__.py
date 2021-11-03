@@ -1,5 +1,7 @@
 #import flask - from the package import class
-from flask import Flask 
+from re import template
+from flask import Flask
+from flask.templating import render_template 
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -24,10 +26,10 @@ def create_app():
    #set the app configuration data 
 
    #Postgres Database uncomment if you wish to use this.
-   app.config['SQLALCHEMY_DATABASE_URI']= uri
+   #app.config['SQLALCHEMY_DATABASE_URI']= uri
 
    #Sqlite Database uncomment if you wish to use this.
-   #app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
+   app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
 
    #initialize db with flask app
    db.init_app(app)
@@ -59,7 +61,14 @@ def create_app():
 
    from . import auth
    app.register_blueprint(auth.bp)
-    
+   
+   @app.errorhandler(404)
+   def page_not_found(e):
+      return render_template('error/404.html'),404
+   
+   @app.errorhandler(500)
+   def internal_server_error(e):
+      return render_template('error/505.html'),500
    return app
 
 
