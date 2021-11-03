@@ -18,7 +18,7 @@
           <div class=".p-sm-5 mb-4 bg-light rounded-3 card2">
             <div class="jumbotronback container-fluid py-5">
             {% for event in event %}
-            {% if 'Red Hot Chilli Peppers' in event.name %}
+            {% if 'Red Hot Chilli Peppers' in event.artist %}
                 <h1 class="display-5 fw-bold text-white customOutline">Upcoming Music Event:</h1>
                 <h4 class="display-5 fw-bold text-warning changeFont customOutline">{{event.name}}</h4>
                     <p id = JumboPara class="col-md-8 fw-bold text-white fs-4 bg-dark rounded-3">{{event.description}}</p>
