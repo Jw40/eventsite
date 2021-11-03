@@ -235,8 +235,14 @@ def edit_event(id):
 @bp.route('/delete_event/<id>')
 def delete_event(id):
       event_delete = Event.query.get(id)
+      event_status_delete = Event_Status.query.filter_by(events_id = id).first()
+      event_comment_delete = Comment.query.filter_by(events_id = id).all()
+      print(event_comment_delete)
       try:
         db.session.delete(event_delete)
+        db.session.delete(event_status_delete)
+        for comment in event_comment_delete:
+          db.session.delete(comment)
         db.session.commit()
         flash('Successfully Deleted Event.', 'edit')
       except Exception as e:
