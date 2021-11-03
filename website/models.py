@@ -58,7 +58,7 @@ class Event(db.Model):
     
     description = db.Column(db.String(2000))
     
-    price = (db.Column(db.Numeric(5,2)))
+    price = (db.Column(db.Integer))
     quota = db.Column(db.Integer, default = 1)
     
     image = db.Column(db.String(400))
