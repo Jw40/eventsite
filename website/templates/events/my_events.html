@@ -30,7 +30,6 @@
                 <p class ="text-center">Event ID: <b>{{record[1].id}}</b></p>
                 <img src="{{record[1].image}}" class="center" alt="Responsive image">
 
-                <!--this is not working-->
                 {% if record[1].status[0] == "Upcoming" %}
                 <h5 class="text-center text-info "><br>Status:</br>{{record[1].status[0]}}</h5>
                 {% elif record[1].status[0] == "Booked" %}
@@ -51,7 +50,7 @@
                     <div class="row justify-content-center">
                         <a href="{{url_for('events.show', id=record[1].id)}}" class="col-md-3 col-md-offest-3 btn btn-primary">View Event Details</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" class="col-md-3 btn delete-custom btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal">Delete</button>
+                        <button type="button" class="col-md-3 btn delete-custom btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal{{record[1].id}}">Delete</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="{{url_for('events.edit_event', id=record[1].id)}}" class="col-md-3 btn btn-success">Edit</a>
                     </div>
@@ -59,9 +58,9 @@
             </div>
             <br><hr><br>
                 
-                
-            <div class="modal" tabindex="-1" id="confirmModal">
-                <div class="modal-dialog">
+            <!--modal to confirm deleting an event-->    
+            <div class="modal" tabindex="-1" id="confirmModal{{record[1].id}}">
+                <div class="modal-dialog" id="{{record[1].id}}">
                 <div class="modal-content">
                     <div class="modal-header">
                     <h5 class="modal-title">Confirm event deletion</h5>
@@ -72,11 +71,12 @@
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="{{url_for('events.delete_event', id=record.id)}}" class="col-md-3 btn btn-danger">Delete</a>
+                    <a href="{{url_for('events.delete_event', id=record[1].id)}}" class="col-md-3 btn btn-danger">Delete</a>
                     </div>
                 </div>
                 </div>
-            </div>        
+            </div>      
+              
             <!--display no events if len == 0-->
             {% endfor %}   
             {% if records[0]|length == 0 %}
