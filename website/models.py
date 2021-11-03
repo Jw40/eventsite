@@ -56,7 +56,7 @@ class Event(db.Model):
     category = db.Column(db.String(20))
     ages = db.Column(db.String(20))
     
-    description = db.Column(db.String(200))
+    description = db.Column(db.String(2000))
     
     price = (db.Column(db.Numeric(5,2)))
     quota = db.Column(db.Integer, default = 1)
