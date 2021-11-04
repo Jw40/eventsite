@@ -26,10 +26,10 @@ def create_app():
    #set the app configuration data 
 
    #Postgres Database uncomment if you wish to use this.
-   #app.config['SQLALCHEMY_DATABASE_URI']= uri
+   app.config['SQLALCHEMY_DATABASE_URI']= uri
 
    #Sqlite Database uncomment if you wish to use this.
-   app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
+   #app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///sitedata.sqlite'
 
    #initialize db with flask app
    db.init_app(app)
