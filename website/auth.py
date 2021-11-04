@@ -48,6 +48,8 @@ def register():
         uname = register.user_name.data
         pwd = register.password.data
         email = register.email_id.data
+        number = register.contact_number.data
+        address = register.address.data
         message = 'Registered Successfully'
         # Check if the user name already exists
         u1 = User.query.filter_by(name=uname).first()
@@ -61,7 +63,7 @@ def register():
         
         # Generate a password hash to store and commit the new user to the database
         pwd_hash = generate_password_hash(pwd)
-        new_user = User(name=uname, password_hash=pwd_hash, emailid=email)
+        new_user = User(name=uname, password_hash=pwd_hash, emailid=email, contact_number=number, address=address)
         db.session.add(new_user)
         db.session.commit()
         flash(message, 'register_error')
